@@ -16,7 +16,7 @@ export default function Temperature() {
 		if (forecast?.timezone) {
 			const interval = setInterval(() => {
 				const localMoment = moment().tz(forecast.timezone)
-				setLocalTime(localMoment.format("hh:mm"))
+				setLocalTime(localMoment.format("HH:mm"))
 				setCurrentDate(localMoment.format("dddd, MMMM Do YYYY"))
 			}, 1000)
 			return () => clearInterval(interval)

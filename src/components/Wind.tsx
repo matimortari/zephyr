@@ -21,16 +21,16 @@ export default function Wind() {
 	const roundedWindDirection = Math.round(windDirection)
 
 	return (
-		<section className="flex h-48 flex-col gap-5 p-5">
+		<section className="flex h-48 flex-col p-4">
 			<h2 className="flex items-center gap-2 font-medium">
 				<WindIcon size={25} /> Wind
 			</h2>
 
-			<div className="my-2 flex flex-col">
-				<p className="font-medium">Wind Speed:</p>
-				<p className="mt-2 text-2xl">{roundedWindSpeed} km/h</p>
-				<p className="font-medium">Wind Direction:</p>
-				<p className="mt-2 text-2xl">{roundedWindDirection}°</p>
+			<div className="my-4 flex flex-col gap-1">
+				<p className="text-base font-medium">Wind Speed:</p>
+				<p className="text-lg">{roundedWindSpeed} km/h</p>
+				<p className="text-base font-medium">Wind Direction:</p>
+				<p className="text-lg">{roundedWindDirection}°</p>
 			</div>
 		</section>
 	)

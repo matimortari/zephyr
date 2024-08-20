@@ -55,9 +55,7 @@ export default function DailyForecast() {
 						<CarouselContent>
 							{fourHourForecast.map((forecast, index) => (
 								<CarouselItem className="flex basis-32 cursor-grab flex-col items-center gap-2" key={forecast.time}>
-									<p className="text-muted-foreground">
-										{moment(forecast.time).tz(timezone).format("HH:mm")} {/* Safe usage with timezone */}
-									</p>
+									<p className="text-muted-foreground">{moment(forecast.time).tz(timezone).format("HH:mm")}</p>
 									{getIcon(forecast.temperature)}
 									<p className="font-semibold">{Math.round(forecast.temperature)}° C</p>
 								</CarouselItem>

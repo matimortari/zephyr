@@ -17,13 +17,15 @@ export default function Visibility() {
 	const visibilityInKm = Math.round(visibility / 1000)
 
 	return (
-		<section className="flex h-48 flex-col gap-5 p-5">
+		<section className="flex h-48 flex-col p-4">
 			<h2 className="flex items-center gap-2 font-medium">
 				<Eye size={25} /> Visibility
 			</h2>
 
-			<div className="my-2 flex flex-col">
-				<p className="mt-4 text-2xl">{visibilityInKm} km</p>
+			<div className="my-4 flex flex-col gap-4">
+				<p className="text-2xl">
+					{visibilityInKm} <span className="text-base">km</span>
+				</p>
 				<p className="text-sm">{visibilityRating(visibility)}</p>
 			</div>
 		</section>

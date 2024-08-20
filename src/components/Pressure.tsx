@@ -17,13 +17,15 @@ export default function Pressure() {
 	const roundedPressure = Math.round(surface_pressure)
 
 	return (
-		<section className="flex h-48 flex-col gap-5 p-5">
+		<section className="flex h-48 flex-col p-4">
 			<h2 className="flex items-center gap-2 font-medium">
 				<GaugeCircle size={20} /> Pressure
 			</h2>
 
-			<p className="mt-4 text-2xl">{roundedPressure} hPa</p>
-			<p className="text-sm">{pressureRating(roundedPressure)}</p>
+			<div className="my-4 flex flex-col gap-4">
+				<p className="text-2xl">{roundedPressure} hPa</p>
+				<p className="text-sm">{pressureRating(roundedPressure)}</p>
+			</div>
 		</section>
 	)
 }

@@ -14,15 +14,18 @@ export default function Precipitation() {
 	const snowfall = forecast.current.snowfall
 
 	return (
-		<section className="flex h-48 flex-col gap-4 p-4">
+		<section className="flex h-48 flex-col p-4">
 			<h2 className="flex items-center gap-2 font-medium">
 				<CloudRain size={25} /> Precipitation
 			</h2>
 
-			<div className="my-2 flex flex-col gap-2">
-				<p className="text-sm">Precipitation: {precipitation} mm</p>
-				<p className="text-sm">Rain: {rain} mm</p>
-				<p className="text-sm">Snowfall: {snowfall} cm</p>
+			<div className="my-4 flex flex-col gap-1">
+				<p className="text-base font-medium">Precipitation:</p>
+				<p className="text-lg">{precipitation} mm</p>
+				<p className="text-base font-medium">Rain:</p>
+				<p className="text-lg">{rain} mm</p>
+				<p className="text-base font-medium">Snowfall:</p>
+				<p className="text-lg">{snowfall} mm</p>
 			</div>
 		</section>
 	)
