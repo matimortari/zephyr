@@ -1,69 +1,46 @@
 "use client"
 
-import { kelvinToCelsius, unixToDay } from "@/src/lib/helperConversions"
+import { Progress } from "@radix-ui/react-progress"
 import { CalendarDays } from "lucide-react"
 import { useGlobalContext } from "./GlobalContext"
-import { Progress } from "./ui/progress"
 import { Skeleton } from "./ui/skeleton"
 
-interface DailyData {
-	main: { temp_min: number; temp_max: number }
-	dt: number
-}
+export default function WeeklyForecast() {
+	const { weeklyForecast } = useGlobalContext()
 
-interface FiveDayForecast {
-	list: DailyData[]
-}
-
-const processDailyData = (dailyData: DailyData[]) => {
-	let minTemp = Number.MAX_VALUE
-	let maxTemp = Number.MIN_VALUE
-
-	dailyData.forEach(({ main: { temp_min, temp_max }, dt }) => {
-		minTemp = Math.min(minTemp, temp_min)
-		maxTemp = Math.max(maxTemp, temp_max)
-	})
-
-	return {
-		day: dailyData[0] ? unixToDay(dailyData[0].dt) : "N/A",
-		minTemp: kelvinToCelsius(minTemp),
-		maxTemp: kelvinToCelsius(maxTemp),
-	}
-}
-
-export default function FiveDayForecast() {
-	const { fiveDayForecast } = useGlobalContext()
-
-	if (!fiveDayForecast) {
+	if (!weeklyForecast) {
 		return <Skeleton className="h-[12rem] w-full" />
 	}
 
-	const { list = [] } = fiveDayForecast as FiveDayForecast
+	const { daily } = weeklyForecast
 
-	if (list.length === 0) {
+	if (!daily || daily.time.length === 0) {
 		return (
 			<section className="flex flex-1 flex-col justify-between p-4">
 				<h2 className="flex items-center gap-2 font-medium">
-					<CalendarDays size={20} /> 5-Day Forecast
+					<CalendarDays size={20} /> Weekly Forecast
 				</h2>
 				<p>No data available</p>
 			</section>
 		)
 	}
 
-	const dailyForecast = Array.from({ length: 5 }, (_, i) => {
-		const dailyData = list.slice(i * 8, (i + 1) * 8)
-		return processDailyData(dailyData)
-	})
+	const { time, temperature_2m_max, temperature_2m_min } = daily
 
-	const maxTemp = Math.max(...dailyForecast.map((d) => d.maxTemp))
-	const minTemp = Math.min(...dailyForecast.map((d) => d.minTemp))
+	const dailyForecast = time.map((day, i) => ({
+		day: new Date(day).toLocaleDateString("en-US", { weekday: "short" }),
+		minTemp: temperature_2m_min[i],
+		maxTemp: temperature_2m_max[i],
+	}))
+
+	const maxTemp = Math.max(...temperature_2m_max)
+	const minTemp = Math.min(...temperature_2m_min)
 
 	return (
 		<section className="flex flex-1 flex-col justify-between p-5">
 			<div>
 				<h2 className="flex items-center gap-2 font-medium">
-					<CalendarDays size={20} /> 5-Day Forecast
+					<CalendarDays size={20} /> Weekly Forecast
 				</h2>
 
 				<div className="py-3">

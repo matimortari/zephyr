@@ -1,6 +1,5 @@
 "use client"
 
-import { kelvinToCelsius } from "@/src/lib/helperConversions"
 import { CloudDrizzle, CloudRain, CloudSun, Cloudy, Navigation, Snowflake } from "lucide-react"
 import moment from "moment"
 import { useEffect, useState } from "react"
@@ -24,15 +23,21 @@ export default function Temperature() {
 		}
 	}, [forecast?.timezone])
 
-	if (!forecast?.main || !forecast?.weather) {
+	// Tratemento de erro
+	if (
+		!forecast?.current ||
+		!forecast?.daily ||
+		!forecast?.daily.temperature_2m_min ||
+		!forecast?.daily.temperature_2m_max
+	) {
 		return <Skeleton className="h-full w-full" />
 	}
 
-	const { main, name, weather } = forecast
-	const temp = kelvinToCelsius(main.temp)
-	const minTemp = kelvinToCelsius(main.temp_min)
-	const maxTemp = kelvinToCelsius(main.temp_max)
-	const { main: weatherMain, description } = weather[0]
+	const { current, daily } = forecast
+	const temp = current.temperature_2m
+	const minTemp = daily.temperature_2m_min
+	const maxTemp = daily.temperature_2m_max
+	// const { current: weatherMain, description } = weather[0]
 
 	const getIcon = (weatherMain: string) => {
 		switch (weatherMain) {
@@ -60,7 +65,7 @@ export default function Temperature() {
 				<span className="font-medium">{localTime}</span>
 			</p>
 			<p className="flex gap-1 pt-2 font-bold">
-				<span>{name}</span>
+				{/* <span>{name}</span> */}
 				<span>
 					<Navigation size={15} />
 				</span>
@@ -68,8 +73,8 @@ export default function Temperature() {
 			<p className="self-center py-10 text-9xl font-bold">{temp}°</p>
 			<div>
 				<div>
-					<span>{getIcon(weatherMain)}</span>
-					<p className="pt-2 text-lg font-medium capitalize">{description}</p>
+					{/* <span>{getIcon(weatherMain)}</span> */}
+					{/* <p className="pt-2 text-lg font-medium capitalize">{description}</p> */}
 				</div>
 				<p className="flex items-center gap-2">
 					<span>Low: {minTemp}°</span>
