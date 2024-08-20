@@ -1,8 +1,8 @@
 "use client"
 
-import { Progress } from "@radix-ui/react-progress"
 import { CalendarDays } from "lucide-react"
 import { useGlobalContext } from "./GlobalContext"
+import { Progress } from "./ui/progress"
 import { Skeleton } from "./ui/skeleton"
 
 export default function WeeklyForecast() {
@@ -45,7 +45,7 @@ export default function WeeklyForecast() {
 
 				<div className="py-3">
 					{dailyForecast.map((day, i) => (
-						<div key={i} className="flex flex-col justify-evenly border-b-2 p-2">
+						<div key={i} className="flex flex-col justify-evenly border-b-2 border-foreground p-2">
 							<p className="min-w-14 text-xl">{day.day}</p>
 							<p className="flex justify-between text-sm">
 								<span>(low)</span>

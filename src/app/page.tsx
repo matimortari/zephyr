@@ -46,17 +46,17 @@ export default function Home() {
 						<Precipitation />
 						<Wind />
 						<Humidity />
-						<Pressure />
 						<Sunset />
 						<UvIndex />
-						<Visibility />
 						<AirQuality />
+						<Pressure />
+						<Visibility />
 					</div>
 
 					<div className="mt-4 flex gap-4">
 						<Mapbox />
 						<div className="flex flex-col gap-3">
-							<h2 className="flex items-center gap-2 font-medium">Top Cities</h2>
+							<h2 className="flex items-center gap-2 font-bold">Top Cities</h2>
 							{defaultLocations.map((state, index) => {
 								return (
 									<section
@@ -66,7 +66,7 @@ export default function Home() {
 										}}
 										className="flex cursor-pointer flex-col gap-4"
 									>
-										<p className="p-4 text-center">{state.name}</p>
+										<p className="p-4 text-center font-medium">{state.name}</p>
 									</section>
 								)
 							})}

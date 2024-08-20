@@ -9,7 +9,6 @@ export default function Precipitation() {
 		return <Skeleton className="h-h-48 w-full" />
 	}
 
-	const precipitation = forecast.current.precipitation
 	const rain = forecast.current.rain
 	const snowfall = forecast.current.snowfall
 
@@ -20,8 +19,6 @@ export default function Precipitation() {
 			</h2>
 
 			<div className="my-4 flex flex-col gap-1">
-				<p className="text-base font-medium">Precipitation:</p>
-				<p className="text-lg">{precipitation} mm</p>
 				<p className="text-base font-medium">Rain:</p>
 				<p className="text-lg">{rain} mm</p>
 				<p className="text-base font-medium">Snowfall:</p>
