@@ -1,5 +1,6 @@
 "use client"
 
+import AirQuality from "../components/AirQuality"
 import DailyForecast from "../components/DailyForecast"
 import FeelsLike from "../components/FeelsLike"
 import { useGlobalContextUpdate } from "../components/GlobalContext"
@@ -39,7 +40,7 @@ export default function Home() {
 				</div>
 
 				<div className="flex w-full flex-col">
-					<div className="sm-2:col-span-2 col-span-full grid h-full gap-4 lg:grid-cols-3 xl:grid-cols-4">
+					<div className="sm-2:col-span-2 col-span-full grid gap-4 lg:grid-cols-3 xl:grid-cols-4">
 						<FeelsLike />
 						<DailyForecast />
 						<Precipitation />
@@ -49,27 +50,28 @@ export default function Home() {
 						<Sunset />
 						<UvIndex />
 						<Visibility />
+						<AirQuality />
 					</div>
-				</div>
-			</div>
 
-			<div className="mapbox-container mt-4 flex gap-4">
-				<Mapbox />
-				<div className="flex flex-col gap-3">
-					<h2 className="flex items-center gap-2 font-medium">Top Cities</h2>
-					{defaultLocations.map((state, index) => {
-						return (
-							<section
-								key={index}
-								onClick={() => {
-									getClickedCityCoords(state.lat, state.lon)
-								}}
-								className="flex cursor-pointer flex-col gap-4"
-							>
-								<p className="p-4 text-center">{state.name}</p>
-							</section>
-						)
-					})}
+					<div className="mt-4 flex gap-4">
+						<Mapbox />
+						<div className="flex flex-col gap-3">
+							<h2 className="flex items-center gap-2 font-medium">Top Cities</h2>
+							{defaultLocations.map((state, index) => {
+								return (
+									<section
+										key={index}
+										onClick={() => {
+											getClickedCityCoords(state.lat, state.lon)
+										}}
+										className="flex cursor-pointer flex-col gap-4"
+									>
+										<p className="p-4 text-center">{state.name}</p>
+									</section>
+								)
+							})}
+						</div>
+					</div>
 				</div>
 			</div>
 

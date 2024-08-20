@@ -6,7 +6,7 @@ import { useGlobalContext } from "./GlobalContext"
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel"
 import { Skeleton } from "./ui/skeleton"
 
-export default function FourHourForecast() {
+export default function DailyForecast() {
 	const { forecast } = useGlobalContext()
 
 	if (!forecast || !forecast.hourly || !forecast.hourly.time || !forecast.hourly.temperature_2m) {
