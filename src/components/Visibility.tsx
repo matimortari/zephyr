@@ -1,3 +1,5 @@
+"use client"
+
 import { Eye } from "lucide-react"
 import { visibilityRating } from "../lib/helperRatings"
 import { useGlobalContext } from "./GlobalContext"
@@ -10,7 +12,9 @@ export default function Visibility() {
 		return <Skeleton className="h-48 w-full" />
 	}
 
-	const visibility = forecast.hourly.visibility
+	const visibility = forecast.hourly.visibility[0]
+
+	const visibilityInKm = Math.round(visibility / 1000)
 
 	return (
 		<section className="flex h-48 flex-col gap-5 p-5">
@@ -19,7 +23,7 @@ export default function Visibility() {
 			</h2>
 
 			<div className="my-2 flex flex-col">
-				<p className="mt-4 text-2xl">{Math.round(visibility / 1000)} km</p>
+				<p className="mt-4 text-2xl">{visibilityInKm} km</p>
 				<p className="text-sm">{visibilityRating(visibility)}</p>
 			</div>
 		</section>

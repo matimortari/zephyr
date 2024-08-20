@@ -1,7 +1,7 @@
 "use client"
 
 import { ClockIcon, CloudDrizzle, CloudRain, CloudSun, Cloudy, Snowflake } from "lucide-react"
-import moment from "moment"
+import moment from "moment-timezone" // Ensure moment-timezone is imported
 import { useGlobalContext } from "./GlobalContext"
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel"
 import { Skeleton } from "./ui/skeleton"
@@ -14,6 +14,7 @@ export default function DailyForecast() {
 	}
 
 	const { time, temperature_2m } = forecast.hourly
+	const timezone = forecast.timezone || "UTC"
 
 	// Extract every 4th hour from the forecast data
 	const fourHourForecast = time.reduce((acc, timestamp, index) => {
@@ -54,9 +55,11 @@ export default function DailyForecast() {
 						<CarouselContent>
 							{fourHourForecast.map((forecast, index) => (
 								<CarouselItem className="flex basis-32 cursor-grab flex-col items-center gap-2" key={forecast.time}>
-									<p className="text-muted-foreground">{moment(forecast.time).format("HH:mm")}</p>
+									<p className="text-muted-foreground">
+										{moment(forecast.time).tz(timezone).format("HH:mm")} {/* Safe usage with timezone */}
+									</p>
 									{getIcon(forecast.temperature)}
-									<p className="font-semibold">{forecast.temperature}° C</p>
+									<p className="font-semibold">{Math.round(forecast.temperature)}° C</p>
 								</CarouselItem>
 							))}
 						</CarouselContent>

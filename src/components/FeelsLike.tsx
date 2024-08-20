@@ -21,7 +21,7 @@ export default function FeelsLike() {
 				<Thermometer size={20} /> Feels Like
 			</h2>
 
-			<p className="mt-4 text-2xl">{apparent_temperature}°</p>
+			<p className="mt-4 text-2xl">{Math.round(apparent_temperature)}°</p>
 			<p className="text-sm">{feelsLikeDescription}</p>
 		</section>
 	)

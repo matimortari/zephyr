@@ -15,7 +15,6 @@ export default function Temperature() {
 	useEffect(() => {
 		if (forecast?.timezone) {
 			const interval = setInterval(() => {
-				// Use moment-timezone to handle the timezone
 				const localMoment = moment().tz(forecast.timezone)
 				setLocalTime(localMoment.format("hh:mm"))
 				setCurrentDate(localMoment.format("dddd, MMMM Do YYYY"))
@@ -24,7 +23,6 @@ export default function Temperature() {
 		}
 	}, [forecast?.timezone])
 
-	// Tratamento de erro
 	if (
 		!forecast?.current ||
 		!forecast?.daily ||
@@ -35,10 +33,12 @@ export default function Temperature() {
 	}
 
 	const { current, daily } = forecast
-	const temp = current.temperature_2m
-	const minTemp = daily.temperature_2m_min
-	const maxTemp = daily.temperature_2m_max
-	// const { current: weatherMain, description } = weather[0]
+	const temp = Math.round(current.temperature_2m)
+	const minTemp = Math.round(daily.temperature_2m_min[0])
+	const maxTemp = Math.round(daily.temperature_2m_max[0])
+
+	// Dummy weatherMain value
+	const weatherMain = "Clear"
 
 	const getIcon = (weatherMain: string) => {
 		switch (weatherMain) {
@@ -66,7 +66,6 @@ export default function Temperature() {
 				<span className="font-medium">{localTime}</span>
 			</p>
 			<p className="flex gap-1 pt-2 font-bold">
-				{/* <span>{name}</span> */}
 				<span>
 					<Navigation size={15} />
 				</span>
@@ -74,7 +73,7 @@ export default function Temperature() {
 			<p className="self-center py-10 text-9xl font-bold">{temp}°</p>
 			<div>
 				<div>
-					{/* <span>{getIcon(weatherMain)}</span> */}
+					{getIcon(weatherMain)}
 					{/* <p className="pt-2 text-lg font-medium capitalize">{description}</p> */}
 				</div>
 				<p className="flex items-center gap-2">

@@ -1,4 +1,5 @@
 import { SunsetIcon } from "lucide-react"
+import moment from "moment-timezone"
 import { useGlobalContext } from "./GlobalContext"
 import { Skeleton } from "./ui/skeleton"
 
@@ -9,7 +10,7 @@ export default function Sunset() {
 		return <Skeleton className="h-48 w-full" />
 	}
 
-	const sunsetTime = new Date(forecast.daily.sunset[0]).toLocaleTimeString()
+	const sunsetTime = moment(forecast.daily.sunset[0]).tz(forecast.timezone).format("hh:mm A")
 
 	return (
 		<section className="flex h-48 flex-col gap-5 p-5">

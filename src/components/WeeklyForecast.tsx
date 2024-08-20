@@ -29,12 +29,12 @@ export default function WeeklyForecast() {
 
 	const dailyForecast = time.map((day, i) => ({
 		day: new Date(day).toLocaleDateString("en-US", { weekday: "short" }),
-		minTemp: temperature_2m_min[i],
-		maxTemp: temperature_2m_max[i],
+		minTemp: Math.round(temperature_2m_min[i]),
+		maxTemp: Math.round(temperature_2m_max[i]),
 	}))
 
-	const maxTemp = Math.max(...temperature_2m_max)
-	const minTemp = Math.min(...temperature_2m_min)
+	const maxTemp = Math.round(Math.max(...temperature_2m_max))
+	const minTemp = Math.round(Math.min(...temperature_2m_min))
 
 	return (
 		<section className="flex flex-1 flex-col justify-between p-5">
@@ -55,7 +55,7 @@ export default function WeeklyForecast() {
 								<p className="font-bold">{day.minTemp}°C</p>
 								<Progress
 									className="progress h-3 w-full flex-1"
-									value={((day.maxTemp - day.minTemp) / (maxTemp - minTemp)) * 100}
+									value={Math.round(((day.maxTemp - day.minTemp) / (maxTemp - minTemp)) * 100)}
 								/>
 								<p className="font-bold">{day.maxTemp}°C</p>
 							</div>
