@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
 		const lon = -74.006
 
 		const response = await fetch(
-			`https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,rain_sum,snowfall_sum`
+			`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,rain_sum,snowfall_sum`
 		)
 
 		if (!response.ok) {
