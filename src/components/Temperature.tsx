@@ -1,7 +1,7 @@
 "use client"
 
 import { CloudDrizzle, CloudRain, CloudSun, Cloudy, Navigation, Snowflake } from "lucide-react"
-import moment from "moment"
+import moment from "moment-timezone"
 import { useEffect, useState } from "react"
 import { useGlobalContext } from "./GlobalContext"
 import { Skeleton } from "./ui/skeleton"
@@ -15,7 +15,8 @@ export default function Temperature() {
 	useEffect(() => {
 		if (forecast?.timezone) {
 			const interval = setInterval(() => {
-				const localMoment = moment().utcOffset(forecast.timezone / 60)
+				// Use moment-timezone to handle the timezone
+				const localMoment = moment().tz(forecast.timezone)
 				setLocalTime(localMoment.format("hh:mm"))
 				setCurrentDate(localMoment.format("dddd, MMMM Do YYYY"))
 			}, 1000)
@@ -23,7 +24,7 @@ export default function Temperature() {
 		}
 	}, [forecast?.timezone])
 
-	// Tratemento de erro
+	// Tratamento de erro
 	if (
 		!forecast?.current ||
 		!forecast?.daily ||
