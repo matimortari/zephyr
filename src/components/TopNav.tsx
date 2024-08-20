@@ -3,6 +3,7 @@
 import { Icon } from "@iconify/react"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
+import SearchDialog from "./SearchDialog"
 import { Button } from "./ui/button"
 
 function ThemeButton() {
@@ -29,6 +30,7 @@ export default function TopNav() {
 			<div className="left" />
 			<div className="search-container flex sm:w-fit">
 				<div className="button-group flex items-center gap-1">
+					<SearchDialog />
 					<ThemeButton />
 					<Button
 						onClick={() => {
