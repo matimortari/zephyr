@@ -1,6 +1,7 @@
 import { SunDim } from "lucide-react"
 import { uvIndexRating } from "../lib/helperRatings"
 import { useGlobalContext } from "./GlobalContext"
+import { Progress } from "./ui/progress"
 import { Skeleton } from "./ui/skeleton"
 
 export default function UvIndex() {
@@ -10,7 +11,7 @@ export default function UvIndex() {
 		return <Skeleton className="h-48 w-full" />
 	}
 
-	const uvIndexMax = forecast.daily.uv_index_max[0]?.toFixed(0) || 0
+	const uvIndexMax = forecast.daily.uv_index_max[0] || 0
 
 	const { text, description } = uvIndexRating(uvIndexMax)
 
@@ -22,8 +23,9 @@ export default function UvIndex() {
 
 			<div className="my-4 flex flex-col gap-4">
 				<p className="text-2xl">
-					{uvIndexMax} <span className="text-base">({text})</span>
+					{uvIndexMax.toFixed(0)} <span className="text-base">({text})</span>
 				</p>
+				<Progress className="progress" value={Math.min(uvIndexMax, 10) * 10} max={100} />
 				<p className="text-sm">{description}</p>
 			</div>
 		</section>

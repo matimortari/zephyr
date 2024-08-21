@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
 		// const lat = 40.7128
 		// const lon = -74.006
 
-		const url = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}&current=european_aqi,us_aqi&forecast_days=1`
+		const url = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=52.52&longitude=13.41&current=us_aqi,pm10,pm2_5,carbon_monoxide,nitrogen_dioxide,sulphur_dioxide,ozone&forecast_days=1`
 
 		const res = await axios.get(url)
 

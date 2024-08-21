@@ -14,7 +14,7 @@ export const GlobalContextProvider = ({ children }) => {
 	const [geoCodedList, setGeoCodedList] = useState(defaultLocations)
 	const [forecast, setForecast] = useState({})
 	const [weeklyForecast, setWeeklyForecast] = useState({})
-	const [airQuality, setAirQuality] = useState(null) // New state for air quality
+	const [airQuality, setAirQuality] = useState(null)
 
 	// Fetch geocoded list
 	const fetchGeoCodedList = async (search) => {
@@ -83,7 +83,7 @@ export const GlobalContextProvider = ({ children }) => {
 		const [lat, lon] = activeCityCoords
 		fetchForecast(lat, lon)
 		fetchWeeklyForecast(lat, lon)
-		fetchAirQuality(lat, lon) // Fetch air quality data
+		fetchAirQuality(lat, lon)
 	}, [activeCityCoords])
 
 	return (
@@ -95,7 +95,7 @@ export const GlobalContextProvider = ({ children }) => {
 				inputValue,
 				handleInput,
 				setActiveCityCoords,
-				airQuality, // Provide air quality data
+				airQuality,
 			}}
 		>
 			<GlobalContextUpdate.Provider

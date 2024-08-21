@@ -7,7 +7,7 @@ import { useGlobalContext } from "./GlobalContext"
 import { Skeleton } from "./ui/skeleton"
 
 export default function Temperature() {
-	const { forecast } = useGlobalContext()
+	const { forecast, geoCodedList } = useGlobalContext()
 
 	const [localTime, setLocalTime] = useState<string>("")
 	const [currentDate, setCurrentDate] = useState<string>("")
@@ -59,6 +59,9 @@ export default function Temperature() {
 		}
 	}
 
+	// Assuming geoCodedList is an array with objects that have a 'name' property
+	const cityName = geoCodedList?.[0]?.name || "Unknown City"
+
 	return (
 		<section className="flex flex-col justify-between p-4">
 			<p className="flex items-center justify-between">
@@ -69,6 +72,7 @@ export default function Temperature() {
 				<span>
 					<Navigation size={15} />
 				</span>
+				<span className="font-medium">{cityName}</span>
 			</p>
 			<p className="self-center py-10 text-9xl font-bold">{temp}°</p>
 			<div>
