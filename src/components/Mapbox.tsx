@@ -21,7 +21,7 @@ function FlyToActiveCity({ activeCityCords }) {
 				duration: 1.5,
 			}
 
-			map.flyTo([activeCityCords.lat, activeCityCords.lon], zoomLev, flyToOptions)
+			map.flyTo([activeCityCords.latitude, activeCityCords.longitude], zoomLev, flyToOptions)
 		}
 	}, [activeCityCords, map])
 
@@ -35,13 +35,13 @@ export default function Mapbox() {
 		return <strong>Loading Map</strong>
 	}
 
-	const activeCityCords = { lat: forecast.latitude, lon: forecast.longitude }
+	const activeCityCords = { latitude: forecast.latitude, longitude: forecast.longitude }
 
 	return (
 		<section className="flex-1 basis-[50%]">
 			<MapContainer
 				zoom={10}
-				center={[activeCityCords.lat, activeCityCords.lon]}
+				center={[activeCityCords.latitude, activeCityCords.longitude]}
 				style={{ height: "calc(100% - 2rem)", width: "calc(100% - 2rem)", margin: "1rem", borderRadius: "0.25rem" }}
 			>
 				<TileLayer

@@ -3,11 +3,13 @@ import { NextRequest, NextResponse } from "next/server"
 
 export async function GET(req: NextRequest) {
 	try {
-		const apiKey = process.env.OPENWEATHERMAP_API_KEY
 		const searchParams = req.nextUrl.searchParams
-		const city = searchParams.get("search")
 
-		const url = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${apiKey}`
+		const city = searchParams.get("search")
+		// const url = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${apiKey}`
+		// const url = `https://geocoding-api.open-meteo.com/v1/search?name=Berlin&count=10&language=en&format=json`
+		const url = `https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=10&language=en&format=json`
+
 		const res = await axios.get(url)
 
 		return NextResponse.json(res.data)

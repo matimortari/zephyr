@@ -9,14 +9,9 @@ import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog"
 
 export default function SearchDialog() {
 	const { geoCodedList, inputValue, handleInput } = useGlobalContext()
-
-	const { setActiveCityCoords } = useGlobalContextUpdate()
+	const { getClickedCityCoords } = useGlobalContextUpdate() // Ensure this matches
 
 	const [hoveredIndex, setHoveredIndex] = React.useState<number>(0)
-
-	const getClickedCoords = (lat: number, lon: number) => {
-		setActiveCityCoords([lat, lon])
-	}
 
 	return (
 		<div className="button-search">
@@ -50,14 +45,14 @@ export default function SearchDialog() {
 										},
 										index: number
 									) => {
-										const { country, state, name } = item
+										const { country, state, name, lat, lon } = item
 										return (
 											<li
 												key={index}
 												onMouseEnter={() => setHoveredIndex(index)}
 												className={`cursor-pointer rounded p-4 text-sm ${hoveredIndex === index ? "bg-background" : ""} `}
 												onClick={() => {
-													getClickedCoords(item.lat, item.lon)
+													getClickedCityCoords(lat, lon, name) // Pass name here
 												}}
 											>
 												{name}, {state && state + ","} {country}

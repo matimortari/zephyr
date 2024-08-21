@@ -10,6 +10,7 @@ const GlobalContextUpdate = createContext()
 
 export const GlobalContextProvider = ({ children }) => {
 	const [activeCityCoords, setActiveCityCoords] = useState([40.7128, -74.006])
+	const [activeCityName, setActiveCityName] = useState("New York")
 	const [inputValue, setInputValue] = useState("")
 	const [geoCodedList, setGeoCodedList] = useState(defaultLocations)
 	const [forecast, setForecast] = useState({})
@@ -20,16 +21,17 @@ export const GlobalContextProvider = ({ children }) => {
 	const fetchGeoCodedList = async (search) => {
 		try {
 			const res = await axios.get(`/api/geocoded?search=${search}`)
-			setGeoCodedList(res.data)
+			const locations = res.data.results || []
+			setGeoCodedList(locations)
 		} catch (error) {
 			console.log("Error fetching geocoded list: ", error.message)
 		}
 	}
 
 	// Fetch forecast
-	const fetchForecast = async (lat, lon) => {
+	const fetchForecast = async (latitude, longitude) => {
 		try {
-			const res = await axios.get(`/api/current?lat=${lat}&lon=${lon}`)
+			const res = await axios.get(`/api/current?lat=${latitude}&lon=${longitude}`)
 			setForecast(res.data)
 		} catch (error) {
 			console.log("Error fetching forecast data: ", error.message)
@@ -37,9 +39,9 @@ export const GlobalContextProvider = ({ children }) => {
 	}
 
 	// Fetch weekly forecast
-	const fetchWeeklyForecast = async (lat, lon) => {
+	const fetchWeeklyForecast = async (latitude, longitude) => {
 		try {
-			const res = await axios.get(`/api/weekly?lat=${lat}&lon=${lon}`)
+			const res = await axios.get(`/api/weekly?lat=${latitude}&lon=${longitude}`)
 			setWeeklyForecast(res.data)
 		} catch (error) {
 			console.log("Error fetching weekly forecast data: ", error.message)
@@ -47,9 +49,9 @@ export const GlobalContextProvider = ({ children }) => {
 	}
 
 	// Fetch air quality data
-	const fetchAirQuality = async (lat, lon) => {
+	const fetchAirQuality = async (latitude, longitude) => {
 		try {
-			const res = await axios.get(`/api/air?lat=${lat}&lon=${lon}`)
+			const res = await axios.get(`/api/air?lat=${latitude}&lon=${longitude}`)
 			setAirQuality(res.data)
 		} catch (error) {
 			console.log("Error fetching air quality data: ", error.message)
@@ -78,13 +80,21 @@ export const GlobalContextProvider = ({ children }) => {
 		return () => debouncedFetch.cancel()
 	}, [inputValue])
 
-	// Fetch data when activeCityCoords changes
 	useEffect(() => {
-		const [lat, lon] = activeCityCoords
-		fetchForecast(lat, lon)
-		fetchWeeklyForecast(lat, lon)
-		fetchAirQuality(lat, lon)
+		const [latitude, longitude] = activeCityCoords
+		fetchForecast(latitude, longitude)
+		fetchWeeklyForecast(latitude, longitude)
+		fetchAirQuality(latitude, longitude)
 	}, [activeCityCoords])
+
+	const updateCityName = (name) => {
+		setActiveCityName(name)
+	}
+
+	const getClickedCityCoords = (latitude, longitude, cityName) => {
+		setActiveCityCoords([latitude, longitude])
+		updateCityName(cityName)
+	}
 
 	return (
 		<GlobalContext.Provider
@@ -96,11 +106,14 @@ export const GlobalContextProvider = ({ children }) => {
 				handleInput,
 				setActiveCityCoords,
 				airQuality,
+				activeCityName,
 			}}
 		>
 			<GlobalContextUpdate.Provider
 				value={{
 					setActiveCityCoords,
+					updateCityName,
+					getClickedCityCoords,
 				}}
 			>
 				{children}

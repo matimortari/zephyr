@@ -18,10 +18,11 @@ import Wind from "../components/Wind"
 import { defaultLocations } from "../lib/defaultLocations"
 
 export default function Home() {
-	const { setActiveCityCoords } = useGlobalContextUpdate()
+	const { setActiveCityCoords, updateCityName } = useGlobalContextUpdate()
 
-	const getClickedCityCoords = (lat: number, lon: number) => {
-		setActiveCityCoords([lat, lon])
+	const getClickedCityCoords = (latitude: number, longitude: number, cityName: string) => {
+		setActiveCityCoords([latitude, longitude])
+		updateCityName(cityName) // Update the city name
 
 		window.scrollTo({
 			top: 0,
@@ -56,17 +57,17 @@ export default function Home() {
 					<div className="mt-4 flex gap-4">
 						<Mapbox />
 						<div className="flex flex-col gap-3">
-							<h2 className="flex items-center gap-2 font-bold">Top Cities</h2>
-							{defaultLocations.map((state, index) => {
+							<h2 className="flex items-center gap-2 font-medium">Top Cities</h2>
+							{defaultLocations.map((location, index) => {
 								return (
 									<section
 										key={index}
 										onClick={() => {
-											getClickedCityCoords(state.lat, state.lon)
+											getClickedCityCoords(location.latitude, location.longitude, location.name)
 										}}
 										className="flex cursor-pointer flex-col gap-4"
 									>
-										<p className="p-4 text-center font-medium">{state.name}</p>
+										<p className="p-4 text-center">{location.name}</p>
 									</section>
 								)
 							})}
