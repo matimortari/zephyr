@@ -1,0 +1,21 @@
+import axios from "axios"
+import { NextRequest, NextResponse } from "next/server"
+
+export async function GET(req: NextRequest) {
+	try {
+		const searchParams = req.nextUrl.searchParams
+		const lat = searchParams.get("lat")
+		const lon = searchParams.get("lon")
+		// const lat = 40.7128
+		// const lon = -74.006
+
+		const url = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}&current=european_aqi,us_aqi&forecast_days=1`
+
+		const res = await axios.get(url)
+
+		return NextResponse.json(res.data)
+	} catch (error) {
+		console.log("Error fetching pollution data ", error)
+		return new Response("Error fetching pollution data", { status: 500 })
+	}
+}

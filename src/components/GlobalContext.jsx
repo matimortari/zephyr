@@ -14,12 +14,12 @@ export const GlobalContextProvider = ({ children }) => {
 	const [geoCodedList, setGeoCodedList] = useState(defaultLocations)
 	const [forecast, setForecast] = useState({})
 	const [weeklyForecast, setWeeklyForecast] = useState({})
+	const [airQuality, setAirQuality] = useState(null) // New state for air quality
 
 	// Fetch geocoded list
 	const fetchGeoCodedList = async (search) => {
 		try {
 			const res = await axios.get(`/api/geocoded?search=${search}`)
-
 			setGeoCodedList(res.data)
 		} catch (error) {
 			console.log("Error fetching geocoded list: ", error.message)
@@ -29,8 +29,7 @@ export const GlobalContextProvider = ({ children }) => {
 	// Fetch forecast
 	const fetchForecast = async (lat, lon) => {
 		try {
-			const res = await axios.get(`api/current?lat=${lat}&lon=${lon}`)
-
+			const res = await axios.get(`/api/current?lat=${lat}&lon=${lon}`)
 			setForecast(res.data)
 		} catch (error) {
 			console.log("Error fetching forecast data: ", error.message)
@@ -40,11 +39,20 @@ export const GlobalContextProvider = ({ children }) => {
 	// Fetch weekly forecast
 	const fetchWeeklyForecast = async (lat, lon) => {
 		try {
-			const res = await axios.get(`api/weekly?lat=${lat}&lon=${lon}`)
-
+			const res = await axios.get(`/api/weekly?lat=${lat}&lon=${lon}`)
 			setWeeklyForecast(res.data)
 		} catch (error) {
 			console.log("Error fetching weekly forecast data: ", error.message)
+		}
+	}
+
+	// Fetch air quality data
+	const fetchAirQuality = async (lat, lon) => {
+		try {
+			const res = await axios.get(`/api/air?lat=${lat}&lon=${lon}`)
+			setAirQuality(res.data)
+		} catch (error) {
+			console.log("Error fetching air quality data: ", error.message)
 		}
 	}
 
@@ -70,9 +78,12 @@ export const GlobalContextProvider = ({ children }) => {
 		return () => debouncedFetch.cancel()
 	}, [inputValue])
 
+	// Fetch data when activeCityCoords changes
 	useEffect(() => {
-		fetchForecast(activeCityCoords[0], activeCityCoords[1])
-		fetchWeeklyForecast(activeCityCoords[0], activeCityCoords[1])
+		const [lat, lon] = activeCityCoords
+		fetchForecast(lat, lon)
+		fetchWeeklyForecast(lat, lon)
+		fetchAirQuality(lat, lon) // Fetch air quality data
 	}, [activeCityCoords])
 
 	return (
@@ -84,6 +95,7 @@ export const GlobalContextProvider = ({ children }) => {
 				inputValue,
 				handleInput,
 				setActiveCityCoords,
+				airQuality, // Provide air quality data
 			}}
 		>
 			<GlobalContextUpdate.Provider
