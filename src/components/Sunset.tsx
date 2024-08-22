@@ -19,9 +19,11 @@ export default function Sunset() {
 				<SunsetIcon size={25} /> Sunset & Sunrise
 			</h2>
 
-			<div className="mt-4 flex flex-col gap-4">
-				<p className="text-lg">Sunset at {sunsetTime}</p>
-				<p className="text-sm">Sunrise at {sunriseTime}</p>
+			<div className="mt-4 flex flex-col gap-1">
+				<p className="text-base font-medium">Sunset at:</p>
+				<p className="text-lg">{sunsetTime}</p>
+				<p className="text-base font-medium">Sunrise at:</p>
+				<p className="text-lg">{sunriseTime}</p>
 			</div>
 		</section>
 	)

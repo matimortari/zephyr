@@ -46,11 +46,16 @@ export const visibilityRating = (visibility: number) => {
 	else return "Poor: Restricted and unclear view."
 }
 
-export const pressureRating = (pressure: number) => {
-	if (pressure < 1000) return "Very low pressure."
-	else if (pressure < 1015) return "Low atmospheric pressure."
-	else if (pressure < 1025) return "Normal atmospheric pressure."
-	else return "High atmospheric pressure."
+export const pressureRating = (pressure: number): string => {
+	if (pressure < 1000) {
+		return "Very low pressure: likely stormy or unsettled weather."
+	} else if (pressure < 1015) {
+		return "Low pressure: generally unstable weather with possible precipitation."
+	} else if (pressure < 1025) {
+		return "Normal pressure: stable weather with fewer changes."
+	} else {
+		return "High pressure: likely clear and stable weather."
+	}
 }
 
 export const humidityRating = (humidity: number) => {
@@ -58,4 +63,20 @@ export const humidityRating = (humidity: number) => {
 	else if (humidity < 50) return "Comfortable humidity."
 	else if (humidity < 70) return "Moderate humidity."
 	else return "High humidity: stay cool!"
+}
+
+export function airQualityIndexToDescription(index: number | undefined | null): string {
+	if (index === undefined || index === null) return "Unknown"
+
+	const categories = [
+		{ max: 50, description: "Air quality is good." },
+		{ max: 100, description: "Air quality is moderate." },
+		{ max: 150, description: "Unhealthy for Sensitive Groups." },
+		{ max: 200, description: "Unhealthy air quality." },
+		{ max: 300, description: "Very unhealthy air quality." },
+		{ max: Infinity, description: "Hazardous air quality." },
+	]
+
+	const rating = categories.find((category) => index <= category.max)
+	return rating ? rating.description : "Unknown"
 }

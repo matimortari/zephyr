@@ -18,7 +18,7 @@ export default function FeelsLike() {
 	return (
 		<section className="flex h-48 flex-col p-4">
 			<h2 className="flex items-center gap-2 font-medium">
-				<Thermometer size={20} /> Feels Like
+				<Thermometer size={25} /> Feels Like
 			</h2>
 
 			<div className="my-4 flex flex-col gap-4">

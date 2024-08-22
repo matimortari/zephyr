@@ -17,7 +17,7 @@ export default function Humidity() {
 	return (
 		<section className="flex h-48 flex-col p-4">
 			<h2 className="flex items-center gap-2 font-medium">
-				<Droplets size={20} /> Humidity
+				<Droplets size={25} /> Humidity
 			</h2>
 
 			<div className="my-4 flex flex-col gap-4">

@@ -45,8 +45,8 @@ export default function Home() {
 						<FeelsLike />
 						<DailyForecast />
 						<Precipitation />
-						<Wind />
 						<Humidity />
+						<Wind />
 						<Sunset />
 						<UvIndex />
 						<AirQuality />

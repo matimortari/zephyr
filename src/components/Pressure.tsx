@@ -19,7 +19,7 @@ export default function Pressure() {
 	return (
 		<section className="flex h-48 flex-col p-4">
 			<h2 className="flex items-center gap-2 font-medium">
-				<GaugeCircle size={20} /> Pressure
+				<GaugeCircle size={25} /> Pressure
 			</h2>
 
 			<div className="my-4 flex flex-col gap-4">

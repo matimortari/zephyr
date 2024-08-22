@@ -18,7 +18,7 @@ export default function WeeklyForecast() {
 		return (
 			<section className="flex flex-1 flex-col justify-between p-4">
 				<h2 className="flex items-center gap-2 font-medium">
-					<CalendarDays size={20} /> Weekly Forecast
+					<CalendarDays size={25} /> Weekly Forecast
 				</h2>
 				<p>No data available</p>
 			</section>
@@ -41,7 +41,7 @@ export default function WeeklyForecast() {
 		<section className="flex flex-1 flex-col justify-between p-5">
 			<div>
 				<h2 className="flex items-center gap-2 font-medium">
-					<CalendarDays size={20} /> Weekly Forecast
+					<CalendarDays size={25} /> Weekly Forecast
 				</h2>
 
 				<div className="py-3">

@@ -21,12 +21,12 @@ export default function UvIndex() {
 				<SunDim size={25} /> UV Index
 			</h2>
 
-			<div className="my-4 flex flex-col gap-4">
+			<div className="my-4 flex flex-col gap-2">
 				<p className="text-2xl">
 					{uvIndexMax.toFixed(0)} <span className="text-base">({text})</span>
 				</p>
 				<Progress className="progress" value={Math.min(uvIndexMax, 10) * 10} max={100} />
-				<p className="text-sm">{description}</p>
+				<p className="w-36 text-sm">{description}</p>
 			</div>
 		</section>
 	)
