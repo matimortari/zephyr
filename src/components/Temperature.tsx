@@ -1,8 +1,7 @@
-"use client"
-
-import { CloudDrizzle, CloudRain, CloudSun, Cloudy, Navigation, Snowflake } from "lucide-react"
 import moment from "moment-timezone"
 import { useEffect, useState } from "react"
+import { getIcon } from "../lib/helperGetIcon"
+import { getWeatherDescription } from "../lib/helperWeatherMapping"
 import { useGlobalContext } from "./GlobalContext"
 import { Skeleton } from "./ui/skeleton"
 
@@ -37,26 +36,7 @@ export default function Temperature() {
 	const minTemp = Math.round(daily.temperature_2m_min[0])
 	const maxTemp = Math.round(daily.temperature_2m_max[0])
 
-	const weatherMain = current?.weather?.[0]?.main || "Clear"
-
-	const getIcon = (weatherMain: string) => {
-		switch (weatherMain) {
-			case "Drizzle":
-				return <CloudDrizzle size={25} />
-			case "Rain":
-				return <CloudRain size={25} />
-			case "Thunderstorm":
-				return <CloudRain size={25} />
-			case "Snow":
-				return <Snowflake size={25} />
-			case "Clear":
-				return <CloudSun size={25} />
-			case "Clouds":
-				return <Cloudy size={25} />
-			default:
-				return <CloudSun size={25} />
-		}
-	}
+	const weatherCode = current.weather_code || 0
 
 	return (
 		<section className="flex flex-col justify-between p-4">
@@ -65,16 +45,13 @@ export default function Temperature() {
 				<span className="font-medium">{localTime}</span>
 			</p>
 			<p className="flex gap-1 pt-2 font-bold">
-				<span>
-					<Navigation size={15} />
-				</span>
 				<span>{activeCityName}</span>
 			</p>
 			<p className="self-center py-10 text-9xl font-bold">{temp}°</p>
 			<div>
 				<div>
-					{getIcon(weatherMain)}
-					{/* <p className="pt-2 text-lg font-medium capitalize">{description}</p> */}
+					{getIcon(weatherCode)}
+					<p className="pt-2 text-lg font-medium capitalize">{getWeatherDescription(weatherCode)}</p>
 				</div>
 				<p className="flex items-center gap-2">
 					<span>Low: {minTemp}°</span>
