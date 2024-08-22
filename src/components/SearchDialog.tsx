@@ -5,7 +5,7 @@ import React from "react"
 import { useGlobalContext, useGlobalContextUpdate } from "./GlobalContext"
 import { Button } from "./ui/button"
 import { Command, CommandInput } from "./ui/command"
-import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog"
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "./ui/dialog"
 
 export default function SearchDialog() {
 	const { geoCodedList, inputValue, handleInput } = useGlobalContext()
@@ -18,7 +18,7 @@ export default function SearchDialog() {
 			<Dialog>
 				<DialogTrigger asChild>
 					<Button className="inline-flex items-center justify-center bg-card font-medium shadow-lg duration-200 ease-in-out">
-						<p className="text-sm text-muted-foreground">Get Cities</p>
+						<p className="text-sm text-muted-foreground">Search Locations...</p>
 						<div className="ml-40 flex items-center gap-2">
 							<SearchIcon size={15} />
 						</div>
@@ -26,9 +26,14 @@ export default function SearchDialog() {
 				</DialogTrigger>
 
 				<DialogContent className="p-0">
+					<DialogTitle className="px-4 pt-2 text-base">Search Locations</DialogTitle>
 					<Command>
-						<CommandInput value={inputValue} onChangeCapture={handleInput} placeholder="Search Locations..." />
-						<ul className="p-2">
+						<CommandInput
+							value={inputValue}
+							onChangeCapture={handleInput}
+							placeholder="Search for a city or location..."
+						/>
+						<ul>
 							<p className="p-2 text-sm text-muted-foreground">Suggestions</p>
 
 							{geoCodedList?.length === 0 || (!geoCodedList && <p>No Results</p>)}
@@ -40,19 +45,19 @@ export default function SearchDialog() {
 											name: string
 											country: string
 											state: string
-											lat: number
-											lon: number
+											latitude: number
+											longitude: number
 										},
 										index: number
 									) => {
-										const { country, state, name, lat, lon } = item
+										const { country, state, name, latitude, longitude } = item
 										return (
 											<li
 												key={index}
 												onMouseEnter={() => setHoveredIndex(index)}
 												className={`cursor-pointer rounded p-4 text-sm ${hoveredIndex === index ? "bg-background" : ""} `}
 												onClick={() => {
-													getClickedCityCoords(lat, lon, name) // Pass name here
+													getClickedCityCoords(latitude, longitude, name)
 												}}
 											>
 												{name}, {state && state + ","} {country}
