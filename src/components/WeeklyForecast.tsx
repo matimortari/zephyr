@@ -25,12 +25,13 @@ export default function WeeklyForecast() {
 		)
 	}
 
-	const { time, temperature_2m_max, temperature_2m_min } = daily
+	const { time, temperature_2m_max, temperature_2m_min, precipitation_sum } = daily
 
 	const dailyForecast = time.map((day, i) => ({
 		day: new Date(day).toLocaleDateString("en-US", { weekday: "short" }),
 		minTemp: Math.round(temperature_2m_min[i]),
 		maxTemp: Math.round(temperature_2m_max[i]),
+		precipitation: precipitation_sum[i],
 	}))
 
 	const maxTemp = Math.round(Math.max(...temperature_2m_max))
@@ -53,10 +54,17 @@ export default function WeeklyForecast() {
 							</p>
 							<div className="flex flex-1 items-center justify-between gap-4">
 								<p className="font-bold">{day.minTemp}°C</p>
-								<Progress
-									className="progress h-3 w-full flex-1"
-									value={Math.round(((day.maxTemp - day.minTemp) / (maxTemp - minTemp)) * 100)}
-								/>
+								<div className="relative flex flex-1 items-center">
+									<div className="relative flex flex-1 items-center">
+										<p className="absolute w-full text-center text-xs text-muted-foreground" style={{ top: "-1.5rem" }}>
+											Precipitation: {day.precipitation} mm
+										</p>
+										<Progress
+											className="progress w-full"
+											value={Math.round(((day.maxTemp - day.minTemp) / (maxTemp - minTemp)) * 100)}
+										/>
+									</div>
+								</div>
 								<p className="font-bold">{day.maxTemp}°C</p>
 							</div>
 						</div>

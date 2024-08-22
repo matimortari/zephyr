@@ -22,7 +22,7 @@ export default function Home() {
 
 	const getClickedCityCoords = (latitude: number, longitude: number, cityName: string) => {
 		setActiveCityCoords([latitude, longitude])
-		updateCityName(cityName) // Update the city name
+		updateCityName(cityName)
 
 		window.scrollTo({
 			top: 0,

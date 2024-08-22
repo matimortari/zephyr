@@ -11,19 +11,19 @@ const TileLayer = dynamic(() => import("react-leaflet").then((module) => module.
 	ssr: false, // Disable server-side rendering for this TileLayer component
 })
 
-function FlyToActiveCity({ activeCityCords }) {
+function FlyToActiveCity({ activeCityCoords }) {
 	const map = useMap()
 
 	useEffect(() => {
-		if (activeCityCords && !isNaN(activeCityCords.lat) && !isNaN(activeCityCords.lon)) {
+		if (activeCityCoords && !isNaN(activeCityCoords.latitude) && !isNaN(activeCityCoords.longitude)) {
 			const zoomLev = 13
 			const flyToOptions = {
 				duration: 1.5,
 			}
 
-			map.flyTo([activeCityCords.latitude, activeCityCords.longitude], zoomLev, flyToOptions)
+			map.flyTo([activeCityCoords.latitude, activeCityCoords.longitude], zoomLev, flyToOptions)
 		}
-	}, [activeCityCords, map])
+	}, [activeCityCoords, map])
 
 	return null
 }
@@ -31,24 +31,24 @@ function FlyToActiveCity({ activeCityCords }) {
 export default function Mapbox() {
 	const { forecast } = useGlobalContext()
 
-	if (!forecast || typeof forecast.latitude !== "number" || typeof forecast.longitude !== "number") {
+	if (!forecast || !forecast.latitude || !forecast.longitude) {
 		return <strong>Loading Map</strong>
 	}
 
-	const activeCityCords = { latitude: forecast.latitude, longitude: forecast.longitude }
+	const activeCityCoords = { latitude: forecast.latitude, longitude: forecast.longitude }
 
 	return (
 		<section className="flex-1 basis-[50%]">
 			<MapContainer
 				zoom={10}
-				center={[activeCityCords.latitude, activeCityCords.longitude]}
+				center={[activeCityCoords.latitude, activeCityCoords.longitude]}
 				style={{ height: "calc(100% - 2rem)", width: "calc(100% - 2rem)", margin: "1rem", borderRadius: "0.25rem" }}
 			>
 				<TileLayer
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 					attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
 				/>
-				<FlyToActiveCity activeCityCords={activeCityCords} />
+				<FlyToActiveCity activeCityCoords={activeCityCoords} />
 			</MapContainer>
 		</section>
 	)

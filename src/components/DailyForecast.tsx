@@ -1,7 +1,7 @@
 "use client"
 
 import { ClockIcon, CloudDrizzle, CloudRain, CloudSun, Cloudy, Snowflake } from "lucide-react"
-import moment from "moment-timezone" // Ensure moment-timezone is imported
+import moment from "moment-timezone"
 import { useGlobalContext } from "./GlobalContext"
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel"
 import { Skeleton } from "./ui/skeleton"
@@ -9,19 +9,26 @@ import { Skeleton } from "./ui/skeleton"
 export default function DailyForecast() {
 	const { forecast } = useGlobalContext()
 
-	if (!forecast || !forecast.hourly || !forecast.hourly.time || !forecast.hourly.temperature_2m) {
+	if (
+		!forecast ||
+		!forecast.hourly ||
+		!forecast.hourly.time ||
+		!forecast.hourly.temperature_2m ||
+		!forecast.hourly.precipitation
+	) {
 		return <Skeleton className="h-48 w-full" />
 	}
 
-	const { time, temperature_2m } = forecast.hourly
+	const { time, temperature_2m, precipitation } = forecast.hourly
 	const timezone = forecast.timezone || "UTC"
 
-	// Extract every 4th hour from the forecast data
+	// Extract every hour from the forecast data
 	const fourHourForecast = time.reduce((acc, timestamp, index) => {
-		if (index % 4 === 0) {
+		if (index % 1 === 0) {
 			acc.push({
 				time: timestamp,
 				temperature: temperature_2m[index],
+				precipitation: precipitation[index],
 			})
 		}
 		return acc
@@ -54,10 +61,12 @@ export default function DailyForecast() {
 					<Carousel className="w-full">
 						<CarouselContent>
 							{fourHourForecast.map((forecast, index) => (
-								<CarouselItem className="flex basis-32 cursor-grab flex-col items-center gap-2" key={forecast.time}>
+								<CarouselItem className="flex basis-32 cursor-grab flex-col items-center gap-1" key={forecast.time}>
 									<p className="text-muted-foreground">{moment(forecast.time).tz(timezone).format("HH:mm")}</p>
 									{getIcon(forecast.temperature)}
 									<p className="font-semibold">{Math.round(forecast.temperature)}° C</p>
+									<span className="text-xs text-muted-foreground">Precipitation: </span>
+									<p className="text-sm">{forecast.precipitation} mm</p>
 								</CarouselItem>
 							))}
 						</CarouselContent>
