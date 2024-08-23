@@ -43,7 +43,7 @@ export default function WeeklyForecast() {
 
 			{dailyForecast.map((day, i) => (
 				<div key={i} className="flex flex-col justify-evenly border-b-2 border-muted-foreground p-2">
-					<p className="pb-1 text-xl">{day.day}</p>
+					<p className="text-lg font-bold">{day.day}</p>
 					<p className="flex justify-between text-xs">
 						<span>(low)</span>
 						<span>(high)</span>

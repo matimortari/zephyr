@@ -1,60 +1,35 @@
-// Get air quality rating and description based on the AQI value
-export const airQualityRating = (aqIndex: number) => {
-	if (aqIndex <= 50) {
-		return {
-			rating: "good",
-			description: "Air quality is good.",
-		}
-	} else if (aqIndex <= 100) {
-		return {
-			rating: "moderate",
-			description: "Air quality is moderate.",
-		}
-	} else if (aqIndex <= 150) {
-		return {
-			rating: "unhealthy for sensitive groups",
-			description: "Unhealthy for Sensitive Groups.",
-		}
-	} else if (aqIndex <= 200) {
-		return {
-			rating: "unhealthy",
-			description: "Unhealthy air quality.",
-		}
-	} else if (aqIndex <= 300) {
-		return {
-			rating: "very unhealthy",
-			description: "Very unhealthy air quality.",
-		}
-	} else {
-		return {
-			rating: "hazardous",
-			description: "Hazardous air quality.",
-		}
-	}
-}
-
 // Get UV index rating based on the UV index value
 export const uvIndexRating = (uvIndex: number) => {
 	if (uvIndex <= 2)
 		return {
-			rating: "low",
+			rating: "Low",
 			description: "No protection required. You can safely stay outside.",
 		}
 	else if (uvIndex <= 5)
 		return {
-			rating: "moderate",
+			rating: "Moderate",
 			description: "Protection required. Seek shade during midday hours.",
 		}
 	else if (uvIndex <= 7)
 		return {
-			rating: "high",
+			rating: "High",
 			description: "Protection required. Seek shade during midday hours.",
 		}
 	else
 		return {
-			rating: "extreme",
+			rating: "Extreme",
 			description: "Extra protection required. Avoid exposure during midday.",
 		}
+}
+
+// Get air quality rating and description based on the AQI value
+export const airQualityRating = (aqIndex: number) => {
+	if (aqIndex <= 50) return "Air quality is good. Enjoy the fresh air!"
+	else if (aqIndex <= 100) return "Air quality is moderate. Enjoy the fresh air!"
+	else if (aqIndex <= 150) return "Unhealthy for Sensitive Groups. Limit outdoor activities."
+	else if (aqIndex <= 200) return "Unhealthy air quality. Limit outdoor activities."
+	else if (aqIndex <= 300) return "Very unhealthy air quality. Avoid outdoor activities."
+	else return "Hazardous air quality. Stay indoors and avoid outdoor activities."
 }
 
 // Get feels like rating based on the apparent temperature

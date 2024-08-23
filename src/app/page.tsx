@@ -48,13 +48,13 @@ export default function Home() {
 						<Wind />
 						<Sunset />
 						<UvIndex />
-						<AirQuality />
 						<Visibility />
+						<AirQuality />
 					</div>
 
 					<div className="my-2 flex gap-2">
 						<Mapbox />
-						<div className="flex flex-col gap-2 py-2">
+						<div className="flex flex-col gap-2 p-2">
 							<h2 className="flex items-center gap-2 font-semibold">Top Cities</h2>
 							{defaultLocations.map((location, index) => {
 								return (
