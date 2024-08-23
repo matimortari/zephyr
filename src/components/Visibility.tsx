@@ -26,7 +26,7 @@ export default function Visibility() {
 				<p className="text-2xl">
 					{visibilityInKm} <span className="text-base">km</span>
 				</p>
-				<p className="text-sm">{visibilityRating(visibility)}</p>
+				<p className="w-36 text-sm">{visibilityRating(visibility)}</p>
 			</div>
 		</section>
 	)

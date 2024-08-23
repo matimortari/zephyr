@@ -31,17 +31,17 @@ export default function Home() {
 	}
 
 	return (
-		<main className="m-auto mx-4 lg:mx-8 xl:mx-24 2xl:mx-64">
+		<main className="m-auto mx-4 lg:mx-8 xl:mx-24">
 			<TopNav />
 
-			<div className="flex flex-col gap-4 pb-4 md:flex-row">
-				<div className="flex w-full min-w-72 flex-col gap-4 md:w-96">
+			<div className="flex flex-col gap-2 pb-4 md:flex-row">
+				<div className="flex w-full min-w-72 flex-col gap-2 md:w-96">
 					<Temperature />
 					<WeeklyForecast />
 				</div>
 
 				<div className="flex w-full flex-col">
-					<div className="sm-2:col-span-2 col-span-full grid gap-4 lg:grid-cols-3 xl:grid-cols-4">
+					<div className="col-span-2 grid gap-2 lg:grid-cols-4">
 						<FeelsLike />
 						<DailyForecast />
 						<Precipitation />
@@ -54,10 +54,10 @@ export default function Home() {
 						<Visibility />
 					</div>
 
-					<div className="mt-4 flex gap-4">
+					<div className="my-2 flex gap-2">
 						<Mapbox />
-						<div className="flex flex-col gap-3">
-							<h2 className="flex items-center gap-2 font-medium">Top Cities</h2>
+						<div className="flex flex-col gap-2 py-2">
+							<h2 className="flex items-center gap-2 font-semibold">Top Cities</h2>
 							{defaultLocations.map((location, index) => {
 								return (
 									<section
@@ -65,9 +65,9 @@ export default function Home() {
 										onClick={() => {
 											getClickedCityCoords(location.latitude, location.longitude, location.name)
 										}}
-										className="flex cursor-pointer flex-col gap-4"
+										className="flex cursor-pointer flex-col gap-2"
 									>
-										<p className="p-4 text-center">{location.name}</p>
+										<p className="p-4 text-center font-medium">{location.name}</p>
 									</section>
 								)
 							})}

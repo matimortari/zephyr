@@ -16,18 +16,13 @@ export default function Temperature() {
 			const interval = setInterval(() => {
 				const localMoment = moment().tz(forecast.timezone)
 				setLocalTime(localMoment.format("HH:mm"))
-				setCurrentDate(localMoment.format("dddd, MMMM Do YYYY"))
+				setCurrentDate(localMoment.format("dddd, MMM Do YYYY"))
 			}, 1000)
 			return () => clearInterval(interval)
 		}
 	}, [forecast?.timezone])
 
-	if (
-		!forecast?.current ||
-		!forecast?.daily ||
-		!forecast?.daily.temperature_2m_min ||
-		!forecast?.daily.temperature_2m_max
-	) {
+	if (!forecast?.current || !forecast?.daily) {
 		return <Skeleton className="h-full w-full" />
 	}
 
@@ -44,20 +39,19 @@ export default function Temperature() {
 				<span className="font-medium">{currentDate}</span>
 				<span className="font-medium">{localTime}</span>
 			</p>
-			<p className="flex gap-1 pt-2 font-bold">
+			<p className="flex gap-2 font-bold">
 				<span>{activeCityName}</span>
 			</p>
-			<p className="self-center py-10 text-9xl font-bold">{temp}°</p>
-			<div>
-				<div>
-					{getIcon(weatherCode)}
-					<p className="pt-2 text-lg font-medium capitalize">{getWeatherDescription(weatherCode)}</p>
-				</div>
-				<p className="flex items-center gap-2">
-					<span>Low: {minTemp}°</span>
-					<span>High: {maxTemp}°</span>
-				</p>
-			</div>
+
+			<p className="self-center p-4 text-9xl font-bold">{temp}°</p>
+
+			{getIcon(weatherCode)}
+			<p className="pt-2 text-lg font-medium">{getWeatherDescription(weatherCode)}</p>
+
+			<p className="flex items-center gap-2">
+				<span>Low: {minTemp}°</span>
+				<span>High: {maxTemp}°</span>
+			</p>
 		</section>
 	)
 }

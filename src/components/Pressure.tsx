@@ -23,8 +23,10 @@ export default function Pressure() {
 			</h2>
 
 			<div className="my-4 flex flex-col gap-4">
-				<p className="text-2xl">{roundedPressure} hPa</p>
-				<p className="text-sm">{pressureRating(roundedPressure)}</p>
+				<p className="text-2xl">
+					{roundedPressure} <span className="text-base">hPa</span>
+				</p>
+				<p className="w-36 text-sm">{pressureRating(roundedPressure)}</p>
 			</div>
 		</section>
 	)

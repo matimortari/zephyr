@@ -20,9 +20,9 @@ export default function Sunset() {
 			</h2>
 
 			<div className="mt-4 flex flex-col gap-1">
-				<p className="text-base font-medium">Sunset at:</p>
+				<p className="text-sm font-medium">Sunset at:</p>
 				<p className="text-lg">{sunsetTime}</p>
-				<p className="text-base font-medium">Sunrise at:</p>
+				<p className="text-sm font-medium">Sunrise at:</p>
 				<p className="text-lg">{sunriseTime}</p>
 			</div>
 		</section>

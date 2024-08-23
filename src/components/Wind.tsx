@@ -27,9 +27,9 @@ export default function Wind() {
 			</h2>
 
 			<div className="my-4 flex flex-col gap-1">
-				<p className="text-base font-medium">Wind Speed:</p>
+				<p className="text-sm font-medium">Wind Speed:</p>
 				<p className="text-lg">{roundedWindSpeed} km/h</p>
-				<p className="text-base font-medium">Wind Direction:</p>
+				<p className="text-sm font-medium">Wind Direction:</p>
 				<p className="text-lg">{roundedWindDirection}°</p>
 			</div>
 		</section>

@@ -8,7 +8,7 @@
 	}
 
 	section {
-		@apply rounded bg-card text-card-foreground shadow-lg;
+		@apply rounded bg-card text-card-foreground;
 	}
 
 	:root {
@@ -68,7 +68,6 @@
 .button {
 	color: var(--foreground);
 	background: var(--card);
-	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 	border-radius: 0.25rem;
 	padding: 0.5rem;
 	font-weight: 700;

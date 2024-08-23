@@ -19,9 +19,9 @@ export default function Precipitation() {
 			</h2>
 
 			<div className="my-4 flex flex-col gap-1">
-				<p className="text-base font-medium">Rain:</p>
+				<p className="text-sm font-medium">Rain:</p>
 				<p className="text-lg">{rain} mm</p>
-				<p className="text-base font-medium">Snowfall:</p>
+				<p className="text-sm font-medium">Snowfall:</p>
 				<p className="text-lg">{snowfall} mm</p>
 			</div>
 		</section>
