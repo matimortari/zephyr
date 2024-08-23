@@ -1,5 +1,3 @@
-"use client"
-
 import { WindIcon } from "lucide-react"
 import { useGlobalContext } from "./GlobalContext"
 import { Skeleton } from "./ui/skeleton"

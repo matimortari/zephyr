@@ -1,7 +1,5 @@
-"use client"
-
 import { Eye } from "lucide-react"
-import { visibilityRating } from "../lib/helperRatings"
+import { visibilityRating } from "../lib/weatherRatings"
 import { useGlobalContext } from "./GlobalContext"
 import { Skeleton } from "./ui/skeleton"
 

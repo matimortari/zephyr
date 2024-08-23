@@ -1,6 +1,4 @@
-"use client"
-
-import { feelsLikeRating } from "@/src/lib/helperRatings"
+import { feelsLikeRating } from "@/src/lib/weatherRatings"
 import { Thermometer } from "lucide-react"
 import { useGlobalContext } from "./GlobalContext"
 import { Skeleton } from "./ui/skeleton"

@@ -1,6 +1,4 @@
-"use client"
-
-import { pressureRating } from "@/src/lib/helperRatings"
+import { pressureRating } from "@/src/lib/weatherRatings"
 import { GaugeCircle } from "lucide-react"
 import { useGlobalContext } from "./GlobalContext"
 import { Skeleton } from "./ui/skeleton"

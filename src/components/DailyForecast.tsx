@@ -1,5 +1,3 @@
-"use client"
-
 import { ClockIcon, CloudDrizzle, CloudRain, CloudSun, Cloudy, Snowflake } from "lucide-react"
 import moment from "moment-timezone"
 import { useGlobalContext } from "./GlobalContext"

@@ -1,5 +1,5 @@
 import { SunDim } from "lucide-react"
-import { uvIndexRating } from "../lib/helperRatings"
+import { uvIndexRating } from "../lib/weatherRatings"
 import { useGlobalContext } from "./GlobalContext"
 import { Progress } from "./ui/progress"
 import { Skeleton } from "./ui/skeleton"
@@ -26,7 +26,7 @@ export default function UvIndex() {
 					{uvIndexMax.toFixed(0)} <span className="text-base">({text})</span>
 				</p>
 				<Progress className="progress" value={Math.min(uvIndexMax, 10) * 10} max={100} />
-				<p className="w-36 text-sm">{description}</p>
+				<p className="w-40 text-sm">{description}</p>
 			</div>
 		</section>
 	)

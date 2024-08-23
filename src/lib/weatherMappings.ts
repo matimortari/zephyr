@@ -1,4 +1,4 @@
-export const getWeatherDescription = (weatherCode: number): string => {
+export const weatherMappings = (weatherCode: number): string => {
 	const weatherMap: { [key: number]: string } = {
 		0: "Clear sky",
 		1: "Mainly clear",

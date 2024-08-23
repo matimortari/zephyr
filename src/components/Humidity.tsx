@@ -1,6 +1,4 @@
-"use client"
-
-import { humidityRating } from "@/src/lib/helperRatings"
+import { humidityRating } from "@/src/lib/weatherRatings"
 import { Droplets } from "lucide-react"
 import { useGlobalContext } from "./GlobalContext"
 import { Skeleton } from "./ui/skeleton"

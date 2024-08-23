@@ -1,5 +1,3 @@
-"use client"
-
 import { CalendarDays } from "lucide-react"
 import { useGlobalContext } from "./GlobalContext"
 import { Progress } from "./ui/progress"

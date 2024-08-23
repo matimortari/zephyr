@@ -1,7 +1,5 @@
-"use client"
-
 import { Gauge } from "lucide-react"
-import { airQualityIndexToDescription } from "../lib/helperRatings"
+import { airQualityIndexToDescription } from "../lib/weatherRatings"
 import { useGlobalContext } from "./GlobalContext"
 import { Progress } from "./ui/progress"
 import { Skeleton } from "./ui/skeleton"

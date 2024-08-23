@@ -1,7 +1,7 @@
 import moment from "moment-timezone"
 import { useEffect, useState } from "react"
-import { getIcon } from "../lib/helperGetIcon"
-import { getWeatherDescription } from "../lib/helperWeatherMapping"
+import { getIcon } from "../lib/GetIcon"
+import { weatherMappings } from "../lib/weatherMappings"
 import { useGlobalContext } from "./GlobalContext"
 import { Skeleton } from "./ui/skeleton"
 
@@ -46,7 +46,7 @@ export default function Temperature() {
 			<p className="self-center p-4 text-9xl font-bold">{temp}°</p>
 
 			{getIcon(weatherCode)}
-			<p className="pt-2 text-lg font-medium">{getWeatherDescription(weatherCode)}</p>
+			<p className="pt-2 text-lg font-medium">{weatherMappings(weatherCode)}</p>
 
 			<p className="flex items-center gap-2">
 				<span>Low: {minTemp}°</span>

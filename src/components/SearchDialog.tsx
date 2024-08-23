@@ -1,7 +1,7 @@
 "use client"
 
 import { SearchIcon } from "lucide-react"
-import React from "react"
+import { useState } from "react"
 import { useGlobalContext, useGlobalContextUpdate } from "./GlobalContext"
 import { Button } from "./ui/button"
 import { Command, CommandInput } from "./ui/command"
@@ -11,7 +11,7 @@ export default function SearchDialog() {
 	const { geoCodedList, inputValue, handleInput } = useGlobalContext()
 	const { getClickedCityCoords } = useGlobalContextUpdate()
 
-	const [hoveredIndex, setHoveredIndex] = React.useState<number>(0)
+	const [hoveredIndex, setHoveredIndex] = useState<number>(0)
 
 	return (
 		<Dialog>
