@@ -7,7 +7,6 @@ import { useGlobalContextUpdate } from "../components/GlobalContext"
 import Humidity from "../components/Humidity"
 import Mapbox from "../components/Mapbox"
 import Precipitation from "../components/Precipitation"
-import Pressure from "../components/Pressure"
 import Sunset from "../components/Sunset"
 import Temperature from "../components/Temperature"
 import TopNav from "../components/TopNav"
@@ -50,7 +49,6 @@ export default function Home() {
 						<Sunset />
 						<UvIndex />
 						<AirQuality />
-						<Pressure />
 						<Visibility />
 					</div>
 

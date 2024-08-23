@@ -1,4 +1,5 @@
 import { CloudRain } from "lucide-react"
+import { precipitationRating } from "../lib/weatherRatings"
 import { useGlobalContext } from "./GlobalContext"
 import { Skeleton } from "./ui/skeleton"
 
@@ -9,6 +10,7 @@ export default function Precipitation() {
 		return <Skeleton className="h-h-48 w-full" />
 	}
 
+	const precipitation = forecast.current.precipitation
 	const rain = forecast.current.rain
 	const snowfall = forecast.current.snowfall
 
@@ -18,11 +20,22 @@ export default function Precipitation() {
 				<CloudRain size={25} /> Precipitation
 			</h2>
 
-			<div className="my-4 flex flex-col gap-1">
-				<p className="text-sm font-medium">Rain:</p>
-				<p className="text-lg">{rain} mm</p>
-				<p className="text-sm font-medium">Snowfall:</p>
-				<p className="text-lg">{snowfall} mm</p>
+			<div className="my-4 flex flex-col gap-2">
+				<p className="text-2xl">{precipitation} mm</p>
+
+				<p className="text-sm">{precipitationRating(precipitation)}</p>
+
+				<div className="flex flex-col">
+					<div className="flex flex-row">
+						<p className="text-base font-medium">Rain:</p>
+						<p className="ml-1 text-base font-normal">{rain} mm</p>
+					</div>
+
+					<div className="flex flex-row">
+						<p className="text-base font-medium">Snowfall:</p>
+						<p className="ml-1 text-base font-normal">{snowfall} mm</p>
+					</div>
+				</div>
 			</div>
 		</section>
 	)

@@ -66,20 +66,20 @@ export const feelsLikeRating = (feelsLike: number, minTemp: number, maxTemp: num
 	else return "Feels warmer than the actual temperature."
 }
 
+// Ger precipitation rating based on the precipitation value
+export const precipitationRating = (precipitation: number) => {
+	if (precipitation < 0.1) return "No precipitation expected."
+	else if (precipitation < 1) return "Light precipitation expected."
+	else if (precipitation < 5) return "Moderate precipitation expected."
+	else return "Heavy precipitation expected."
+}
+
 // Get humidity rating based on the humidity value
 export const humidityRating = (humidity: number) => {
 	if (humidity < 30) return "Low humidity: stay hydrated!"
 	else if (humidity < 50) return "Comfortable humidity."
 	else if (humidity < 70) return "Moderate humidity."
 	else return "High humidity: stay cool!"
-}
-
-// Get pressure rating based on the pressure value
-export const pressureRating = (pressure: number): string => {
-	if (pressure < 1000) return "Very low pressure: likely stormy or unsettled weather."
-	else if (pressure < 1015) return "Low pressure: generally unstable weather with possible precipitation."
-	else if (pressure < 1025) return "Normal pressure: stable weather with fewer changes."
-	else return "High pressure: likely clear and stable weather."
 }
 
 // Get visibility rating based on the visibility value
