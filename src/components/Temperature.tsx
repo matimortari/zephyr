@@ -1,7 +1,6 @@
 import moment from "moment-timezone"
 import { useEffect, useState } from "react"
-import { getIcon } from "../lib/GetIcon"
-import { weatherMappings } from "../lib/weatherMappings"
+import { getDescription, getIcon } from "../lib/weatherMappings"
 import { useGlobalContext } from "./GlobalContext"
 import { Skeleton } from "./ui/skeleton"
 
@@ -33,21 +32,23 @@ export default function Temperature() {
 
 	const weatherCode = current.weather_code || 0
 
+	const WeatherIcon = getIcon(weatherCode)
+
 	return (
 		<section className="flex flex-col justify-between p-4">
 			<p className="flex items-center justify-between">
 				<span className="font-medium">{currentDate}</span>
 				<span className="font-medium">{localTime}</span>
 			</p>
+
 			<p className="flex gap-2 font-bold">
 				<span>{activeCityName}</span>
 			</p>
 
 			<p className="self-center p-4 text-9xl font-bold">{temp}°</p>
 
-			{getIcon(weatherCode)}
-			<p className="pt-2 text-lg font-medium">{weatherMappings(weatherCode)}</p>
-
+			<WeatherIcon size={25} />
+			<p className="pt-2 text-lg font-medium">{getDescription(weatherCode)}</p>
 			<p className="flex items-center gap-2">
 				<span>Low: {minTemp}°</span>
 				<span>High: {maxTemp}°</span>

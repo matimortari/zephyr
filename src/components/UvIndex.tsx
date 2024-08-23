@@ -13,7 +13,7 @@ export default function UvIndex() {
 
 	const uvIndexMax = forecast.daily.uv_index_max[0] || 0
 
-	const { text, description } = uvIndexRating(uvIndexMax)
+	const { rating, description } = uvIndexRating(uvIndexMax)
 
 	return (
 		<section className="flex h-48 flex-col p-4">
@@ -23,7 +23,7 @@ export default function UvIndex() {
 
 			<div className="my-4 flex flex-col gap-2">
 				<p className="text-2xl">
-					{uvIndexMax.toFixed(0)} <span className="text-base">({text})</span>
+					{uvIndexMax.toFixed(0)} <span className="text-base">({rating})</span>
 				</p>
 				<Progress className="progress" value={Math.min(uvIndexMax, 10) * 10} max={100} />
 				<p className="w-40 text-sm">{description}</p>

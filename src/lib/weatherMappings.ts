@@ -1,4 +1,7 @@
-export const weatherMappings = (weatherCode: number): string => {
+import { CloudDrizzle, CloudFog, CloudLightning, CloudRain, CloudSun, Snowflake, SunIcon } from "lucide-react"
+
+// Return the appropriate description based on the weather code
+export const getDescription = (weatherCode: number): string => {
 	const weatherMap: { [key: number]: string } = {
 		0: "Clear sky",
 		1: "Mainly clear",
@@ -31,4 +34,53 @@ export const weatherMappings = (weatherCode: number): string => {
 	}
 
 	return weatherMap[weatherCode] || "Unknown weather code"
+}
+
+// Return the appropriate icon based on the weather code
+export const getIcon = (weatherCode: number) => {
+	switch (weatherCode) {
+		case 0:
+			return SunIcon // Clear sky
+		case 1:
+		case 2:
+		case 3:
+			return CloudSun // Mainly clear, partly cloudy, and overcast
+		case 45:
+		case 48:
+			return CloudFog // Fog and depositing rime fog
+		case 51:
+		case 53:
+		case 55:
+			return CloudDrizzle // Drizzle: Light, moderate, and dense intensity
+		case 56:
+		case 57:
+			return CloudDrizzle // Freezing Drizzle: Light and dense intensity
+		case 61:
+		case 63:
+		case 65:
+			return CloudRain // Rain: Slight, moderate and heavy intensity
+		case 66:
+		case 67:
+			return CloudRain // Freezing Rain: Light and heavy intensity
+		case 71:
+		case 73:
+		case 75:
+			return Snowflake // Snow fall: Slight, moderate, and heavy intensity
+		case 77:
+			return Snowflake // Snow grains
+		case 80:
+		case 81:
+		case 82:
+			return CloudRain // Rain showers: Slight, moderate, and violent intensity
+		case 85:
+		case 86:
+			return Snowflake // Snow showers: Slight and heavy intensity
+		case 95:
+			return CloudLightning // Thunderstorm: Slight or moderate intensity
+		case 96:
+		case 99:
+			return CloudLightning // Thunderstorm with slight and heavy hail
+		default:
+			return CloudSun // Default icon
+	}
 }

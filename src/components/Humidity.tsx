@@ -6,7 +6,7 @@ import { Skeleton } from "./ui/skeleton"
 export default function Humidity() {
 	const { forecast } = useGlobalContext()
 
-	if (!forecast || !forecast?.current || !forecast?.current?.relative_humidity_2m || !forecast?.current?.dew_point_2m) {
+	if (!forecast || !forecast?.current || !forecast?.current.relative_humidity_2m || !forecast?.current.dew_point_2m) {
 		return <Skeleton className="h-h-48 w-full" />
 	}
 
@@ -23,7 +23,7 @@ export default function Humidity() {
 				<p className="text-sm">{humidityRating(relative_humidity_2m)}</p>
 				<div className="flex flex-row">
 					<span className="text-base font-medium">Dew Point:</span>
-					<span className="ml-1 text-base font-normal">{dew_point_2m}°C</span>
+					<span className="ml-1 text-base font-normal">{Math.round(dew_point_2m)}°</span>
 				</div>
 			</div>
 		</section>

@@ -6,7 +6,7 @@ import { Skeleton } from "./ui/skeleton"
 export default function FeelsLike() {
 	const { forecast } = useGlobalContext()
 
-	if (!forecast || !forecast?.current || !forecast?.current?.apparent_temperature) {
+	if (!forecast || !forecast?.current || !forecast?.current.apparent_temperature) {
 		return <Skeleton className="h-48 w-full" />
 	}
 

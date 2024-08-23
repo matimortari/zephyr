@@ -6,7 +6,7 @@ import { Skeleton } from "./ui/skeleton"
 export default function Pressure() {
 	const { forecast } = useGlobalContext()
 
-	if (!forecast || !forecast?.current || !forecast?.current?.surface_pressure) {
+	if (!forecast || !forecast?.current || !forecast?.current.surface_pressure) {
 		return <Skeleton className="h-48 w-full" />
 	}
 

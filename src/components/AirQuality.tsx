@@ -1,5 +1,5 @@
 import { Gauge } from "lucide-react"
-import { airQualityIndexToDescription } from "../lib/weatherRatings"
+import { airQualityRating } from "../lib/weatherRatings"
 import { useGlobalContext } from "./GlobalContext"
 import { Progress } from "./ui/progress"
 import { Skeleton } from "./ui/skeleton"
@@ -19,6 +19,8 @@ export default function AirQuality() {
 	const sulphurDioxide = airQuality.current.sulphur_dioxide
 	const ozone = airQuality.current.ozone
 
+	const { rating, description } = airQualityRating(usAqi)
+
 	return (
 		<section className="col-span-2 flex h-48 w-full flex-col p-4 md:flex-row md:gap-10">
 			<div className="flex flex-1 flex-col">
@@ -27,9 +29,10 @@ export default function AirQuality() {
 				</h2>
 
 				<div className="my-4 flex flex-col gap-2">
-					<p className="text-sm">{airQualityIndexToDescription(usAqi)}</p>
+					<p className="text-sm">{rating}</p>
 					<Progress className="progress" value={usAqi ?? 0} max={300} />
 					<p className="text-sm">Air Quality Index: {usAqi ?? "N/A"}</p>
+					<p className="text-sm">{description}</p>
 				</div>
 			</div>
 

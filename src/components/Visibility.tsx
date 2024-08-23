@@ -6,7 +6,7 @@ import { Skeleton } from "./ui/skeleton"
 export default function Visibility() {
 	const { forecast } = useGlobalContext()
 
-	if (!forecast || !forecast.hourly || typeof forecast.hourly.visibility === "undefined") {
+	if (!forecast || !forecast.hourly || !forecast.hourly.visibility) {
 		return <Skeleton className="h-48 w-full" />
 	}
 

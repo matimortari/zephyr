@@ -5,12 +5,7 @@ import { Skeleton } from "./ui/skeleton"
 export default function Wind() {
 	const { forecast } = useGlobalContext()
 
-	if (
-		!forecast ||
-		!forecast.current ||
-		forecast.current.wind_speed_10m === undefined ||
-		forecast.current.wind_direction_10m === undefined
-	) {
+	if (!forecast || !forecast?.current) {
 		return <Skeleton className="h-48 w-full" />
 	}
 
