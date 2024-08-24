@@ -20,12 +20,12 @@ export default function Humidity() {
 
 	return (
 		<section className="flex h-48 flex-col p-4">
-			<h2 className="flex items-center gap-2 font-medium">
+			<h2 className="flex items-center gap-2 text-lg font-medium">
 				<Droplets size={25} /> Humidity
 			</h2>
 
 			<div className="my-4 flex flex-col gap-2">
-				<p className="text-2xl">{relative_humidity_2m}%</p>
+				<p className="text-xl font-medium">{relative_humidity_2m}%</p>
 				<p className="text-sm">{humidityRating(relative_humidity_2m)}</p>
 
 				<div className="flex flex-col">

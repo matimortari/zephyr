@@ -16,7 +16,7 @@ export default function Sunset() {
 	return (
 		<section className="flex h-48 flex-col p-4">
 			<h2 className="flex items-center gap-2 font-medium">
-				<SunsetIcon size={25} /> Sunset & Sunrise
+				<SunsetIcon size={25} /> Sunset
 			</h2>
 
 			<div className="mt-4 flex flex-col gap-1">

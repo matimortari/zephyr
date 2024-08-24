@@ -7,7 +7,7 @@ export default function Precipitation() {
 	const { forecast } = useGlobalContext()
 
 	if (!forecast || !forecast?.current) {
-		return <Skeleton className="h-h-48 w-full" />
+		return <Skeleton className="h-48 w-full" />
 	}
 
 	const precipitation = forecast.current.precipitation
@@ -16,13 +16,12 @@ export default function Precipitation() {
 
 	return (
 		<section className="flex h-48 flex-col p-4">
-			<h2 className="flex items-center gap-2 font-medium">
-				<CloudRain size={25} /> Precipitation
+			<h2 className="flex items-center gap-2 text-lg font-medium">
+				<CloudRain size={20} className="md:size-25" /> Precipitation
 			</h2>
 
 			<div className="my-4 flex flex-col gap-2">
-				<p className="text-2xl">{precipitation} mm</p>
-
+				<p className="text-xl font-medium">{precipitation} mm</p>
 				<p className="text-sm">{precipitationRating(precipitation)}</p>
 
 				<div className="flex flex-col">

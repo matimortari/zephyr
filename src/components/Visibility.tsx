@@ -21,7 +21,7 @@ export default function Visibility() {
 			</h2>
 
 			<div className="my-4 flex flex-col gap-4">
-				<p className="text-2xl">
+				<p className="text-2xl font-medium">
 					{visibilityInKm} <span className="text-base">km</span>
 				</p>
 				<p className="w-36 text-sm">{visibilityRating(visibility)}</p>

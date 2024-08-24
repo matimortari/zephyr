@@ -9,7 +9,7 @@ export default function AirQuality() {
 	const { airQuality } = useGlobalContext()
 
 	if (!airQuality || !airQuality.current) {
-		return <Skeleton className="col-span-2 h-48 w-full md:col-span-full" />
+		return <Skeleton className="h-48 w-full" />
 	}
 
 	const usAqi = airQuality.current.us_aqi
@@ -21,7 +21,7 @@ export default function AirQuality() {
 	const ozone = airQuality.current.ozone
 
 	return (
-		<section className="col-span-2 flex h-48 w-full flex-col p-4 md:flex-row md:gap-10">
+		<section className="col-span-2 flex h-auto w-full flex-col p-4 md:h-48 md:flex-row md:gap-10">
 			<div className="flex flex-1 flex-col">
 				<h2 className="flex items-center gap-2 font-medium">
 					<Gauge size={25} /> Air Quality
@@ -34,7 +34,7 @@ export default function AirQuality() {
 				</div>
 			</div>
 
-			<div className="flex flex-1 flex-col gap-2 md:flex-row">
+			<div className="flex flex-1 flex-row gap-1">
 				<div className="flex flex-1 flex-col gap-1 text-sm font-semibold">
 					<p>
 						PM10: <span className="font-normal">{pm10 ?? "N/A"} μg/m³</span>

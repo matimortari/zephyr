@@ -20,7 +20,7 @@ export default function FeelsLike() {
 			</h2>
 
 			<div className="my-4 flex flex-col gap-4">
-				<p className="text-2xl">{Math.round(apparent_temperature)}°</p>
+				<p className="text-2xl font-medium">{Math.round(apparent_temperature)}°</p>
 				<p className="w-36 text-sm">{feelsLikeDescription}</p>
 			</div>
 		</section>
