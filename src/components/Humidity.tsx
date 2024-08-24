@@ -30,12 +30,12 @@ export default function Humidity() {
 
 				<div className="flex flex-col">
 					<div className="flex flex-row">
-						<span className="text-base font-medium">Dew Point:</span>
-						<span className="ml-1 text-base font-normal">{Math.round(dew_point_2m)}°</span>
+						<span className="text-sm font-medium">Dew Point:</span>
+						<span className="ml-1 text-sm font-normal">{Math.round(dew_point_2m)}°</span>
 					</div>
 					<div className="flex flex-row">
-						<span className="text-base font-medium">Pressure:</span>
-						<span className="ml-1 text-base font-normal">{Math.round(surface_pressure)} hPa</span>
+						<span className="text-sm font-medium">Pressure:</span>
+						<span className="ml-1 text-sm font-normal">{Math.round(surface_pressure)} hPa</span>
 					</div>
 				</div>
 			</div>

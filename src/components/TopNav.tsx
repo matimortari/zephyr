@@ -27,19 +27,17 @@ export default function TopNav() {
 
 	return (
 		<div className="flex w-full items-center justify-end py-2">
-			<div className="flex">
-				<div className="flex items-center gap-2">
-					<SearchDialog />
-					<ThemeButton />
-					<Button
-						onClick={() => {
-							router.push("https://github.com/w11dcard/zephyr")
-						}}
-						className="button"
-					>
-						<Icon icon="simple-icons:github" />
-					</Button>
-				</div>
+			<div className="flex flex-row gap-2">
+				<SearchDialog />
+				<ThemeButton />
+				<Button
+					onClick={() => {
+						router.push("https://github.com/w11dcard/zephyr")
+					}}
+					className="button"
+				>
+					<Icon icon="simple-icons:github" />
+				</Button>
 			</div>
 		</div>
 	)

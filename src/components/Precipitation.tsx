@@ -27,13 +27,13 @@ export default function Precipitation() {
 
 				<div className="flex flex-col">
 					<div className="flex flex-row">
-						<p className="text-base font-medium">Rain:</p>
-						<p className="ml-1 text-base font-normal">{rain} mm</p>
+						<p className="text-sm font-medium">Rain:</p>
+						<p className="ml-1 text-sm font-normal">{rain} mm</p>
 					</div>
 
 					<div className="flex flex-row">
-						<p className="text-base font-medium">Snowfall:</p>
-						<p className="ml-1 text-base font-normal">{snowfall} mm</p>
+						<p className="text-sm font-medium">Snowfall:</p>
+						<p className="ml-1 text-sm font-normal">{snowfall} mm</p>
 					</div>
 				</div>
 			</div>

@@ -16,13 +16,13 @@ export default function SearchDialog() {
 	return (
 		<Dialog>
 			<DialogTrigger asChild>
-				<Button className="items-center justify-center bg-card duration-200 ease-in-out">
+				<Button className="flex items-center justify-center bg-card duration-200 ease-in-out">
 					<p className="text-sm text-muted-foreground">Search Locations...</p>
-					<SearchIcon size={15} className="ml-40 flex items-center gap-2 text-foreground" />
+					<SearchIcon size={15} className="ml-24 flex items-center gap-2 text-foreground" />
 				</Button>
 			</DialogTrigger>
 
-			<DialogContent className="p-0">
+			<DialogContent className="w-full max-w-sm p-0 sm:max-w-md md:max-w-lg lg:max-w-xl">
 				<DialogTitle className="px-4 pt-2 text-base">Search Locations</DialogTitle>
 				<Command>
 					<CommandInput
@@ -55,7 +55,7 @@ export default function SearchDialog() {
 											onClick={() => {
 												getClickedCityCoords(latitude, longitude, name)
 											}}
-											className={`cursor-pointer rounded p-4 text-sm ${hoveredIndex === index ? "bg-muted" : ""} `}
+											className={`cursor-pointer rounded p-4 text-sm ${hoveredIndex === index ? "bg-muted" : ""}`}
 										>
 											{name}, {admin1 && admin1 + ","} {country}
 										</li>
