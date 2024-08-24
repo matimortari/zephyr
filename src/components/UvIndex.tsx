@@ -16,7 +16,7 @@ export default function UvIndex() {
 	const { rating, description } = uvIndexRating(uvIndexMax)
 
 	return (
-		<section className="flex h-48 flex-col p-4">
+		<section className="col-span-full flex h-48 flex-col p-4 md:col-span-1">
 			<h2 className="flex items-center gap-2 font-medium">
 				<SunDim size={25} /> UV Index
 			</h2>

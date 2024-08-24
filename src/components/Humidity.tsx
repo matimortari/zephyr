@@ -13,7 +13,7 @@ export default function Humidity() {
 		!forecast?.current.dew_point_2m ||
 		!forecast?.current.surface_pressure
 	) {
-		return <Skeleton className="h-h-48 w-full" />
+		return <Skeleton className="h-48 w-full" />
 	}
 
 	const { relative_humidity_2m, dew_point_2m, surface_pressure } = forecast.current

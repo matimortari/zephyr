@@ -40,14 +40,14 @@ export default function Home() {
 				</div>
 
 				<div className="flex w-full flex-col">
-					<div className="col-span-2 grid gap-2 lg:grid-cols-4">
+					<div className="grid grid-cols-2 gap-2 lg:grid-cols-4">
 						<FeelsLike />
-						<DailyForecast />
 						<Precipitation />
 						<Humidity />
 						<Wind />
-						<Sunset />
+						<DailyForecast />
 						<UvIndex />
+						<Sunset />
 						<Visibility />
 						<AirQuality />
 					</div>
