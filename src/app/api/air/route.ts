@@ -6,8 +6,6 @@ export async function GET(req: NextRequest) {
 		const searchParams = req.nextUrl.searchParams
 		const lat = searchParams.get("lat")
 		const lon = searchParams.get("lon")
-		// const lat = 40.7128
-		// const lon = -74.006
 
 		const url = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}&current=us_aqi,pm10,pm2_5,carbon_monoxide,nitrogen_dioxide,sulphur_dioxide,ozone&forecast_days=1`
 

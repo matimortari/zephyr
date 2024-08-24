@@ -21,8 +21,8 @@ export default function SearchDialog() {
 				</Button>
 			</DialogTrigger>
 
-			<DialogContent className="scrollable-content scrollbar-hidden max-h-[80vh] p-0">
-				<DialogTitle className="p-2 text-base text-muted-foreground">Search Locations</DialogTitle>
+			<DialogContent className="scrollbar-hidden max-h-[80vh] overflow-auto p-0">
+				<DialogTitle className="p-3 text-lg text-muted-foreground">Search Locations</DialogTitle>
 				<Command className="flex flex-grow flex-col">
 					<CommandInput
 						value={inputValue}

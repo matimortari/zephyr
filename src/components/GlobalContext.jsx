@@ -80,6 +80,7 @@ export const GlobalContextProvider = ({ children }) => {
 		return () => debouncedFetch.cancel()
 	}, [inputValue])
 
+	// Fetch data on initial load
 	useEffect(() => {
 		const [latitude, longitude] = activeCityCoords
 		fetchForecast(latitude, longitude)

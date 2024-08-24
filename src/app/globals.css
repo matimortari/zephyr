@@ -33,16 +33,16 @@
 		--destructive: #9f1919;
 		--destructive-foreground: #e9e9e9;
 
-		--chart-1: #a9dde0;
-		--chart-2: #6cc9cf;
-		--chart-3: #74cfb4;
-		--chart-4: #949b33;
-		--chart-5: #b3832a;
-		--chart-6: #b32a2a;
+		--chart-1: #91b1c0;
+		--chart-2: #6c9db3;
+		--chart-2: #6cb3aa;
+		--chart-3: #9c8a64;
+		--chart-4: #945a58;
+		--chart-5: #9c3d3d;
 	}
 
 	.light {
-		--background: #d8d1d1;
+		--background: #c0c0c0;
 		--foreground: #0f0f0f;
 
 		--card: #e9e9e9;
@@ -57,7 +57,7 @@
 		--accent: #333333;
 		--accent-foreground: #e9e9e9;
 
-		--muted: #cccccc;
+		--muted: #afafaf;
 		--muted-foreground: #757575;
 
 		--destructive: #d83a3a;
@@ -76,15 +76,15 @@
 }
 
 .button:hover {
-	opacity: 0.7;
+	background: var(--primary);
+	color: var(--primary-foreground);
+	transform: scale(1.05);
+	opacity: 0.9;
 }
 
 .progress {
-	background: linear-gradient(to right, #339b7f 0%, #9b9933 50%, #b32a2a 100%);
-}
-
-.scrollbar-hidden::-webkit-scrollbar {
-	display: none;
+	background: linear-gradient(to right, #91b1c0, #6c9db3, #6cb3aa, #9c8a64, #945a58, #9c3d3d);
+	border-radius: 0.5rem;
 }
 
 .scrollbar-hidden {
@@ -92,7 +92,6 @@
 	-ms-overflow-style: none;
 }
 
-
-.scrollable-content {
-	overflow: auto;
+.scrollbar-hidden::-webkit-scrollbar {
+	display: none;
 }
