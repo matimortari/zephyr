@@ -7,7 +7,7 @@ export default function Sunset() {
 	const { forecast } = useGlobalContext()
 
 	if (!forecast || !forecast.daily || !forecast.daily.sunset || !forecast.daily.sunrise) {
-		return <Skeleton className="h-48 w-full" />
+		return <Skeleton className="h-48" />
 	}
 
 	const sunsetTime = moment(forecast.daily.sunset[0]).tz(forecast.timezone).format("HH:mm")

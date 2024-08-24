@@ -6,7 +6,7 @@ export default function Wind() {
 	const { forecast } = useGlobalContext()
 
 	if (!forecast || !forecast?.current) {
-		return <Skeleton className="h-48 w-full" />
+		return <Skeleton className="h-48" />
 	}
 
 	const { wind_speed_10m: windSpeed, wind_direction_10m: windDirection } = forecast.current

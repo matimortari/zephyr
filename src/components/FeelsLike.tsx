@@ -7,7 +7,7 @@ export default function FeelsLike() {
 	const { forecast } = useGlobalContext()
 
 	if (!forecast || !forecast?.current || !forecast?.current.apparent_temperature) {
-		return <Skeleton className="h-48 w-full" />
+		return <Skeleton className="h-48" />
 	}
 
 	const { apparent_temperature, temp_min, temp_max } = forecast.current

@@ -6,22 +6,11 @@ import { Skeleton } from "./ui/skeleton"
 export default function WeeklyForecast() {
 	const { weeklyForecast } = useGlobalContext()
 
-	if (!weeklyForecast) {
-		return <Skeleton className="h-[12rem] w-full" />
+	if (!weeklyForecast || !weeklyForecast.daily || !weeklyForecast.daily.time) {
+		return <Skeleton className="h-full w-full" />
 	}
 
 	const { daily } = weeklyForecast
-
-	if (!daily || daily.time.length === 0) {
-		return (
-			<section className="flex flex-1 flex-col justify-between p-4">
-				<h2 className="flex items-center gap-2 font-medium">
-					<CalendarDays size={25} /> Weekly Forecast
-				</h2>
-				<p>No data available</p>
-			</section>
-		)
-	}
 
 	const { time, temperature_2m_max, temperature_2m_min, precipitation_sum } = daily
 

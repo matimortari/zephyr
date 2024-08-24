@@ -1,15 +1,17 @@
 import "leaflet/dist/leaflet.css"
 import dynamic from "next/dynamic"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useMap } from "react-leaflet"
 import { useGlobalContext } from "./GlobalContext"
+import { Skeleton } from "./ui/skeleton"
 
 const MapContainer = dynamic(() => import("react-leaflet").then((module) => module.MapContainer), {
-	ssr: false, // Disable server-side rendering for this MapContainer component
-})
+	ssr: false,
+}) // Disable server-side rendering for MapContainer
+
 const TileLayer = dynamic(() => import("react-leaflet").then((module) => module.TileLayer), {
-	ssr: false, // Disable server-side rendering for this TileLayer component
-})
+	ssr: false,
+}) // Disable server-side rendering for TileLayer
 
 function FlyToActiveCity({ activeCityCoords }) {
 	const map = useMap()
@@ -30,19 +32,26 @@ function FlyToActiveCity({ activeCityCoords }) {
 
 export default function Mapbox() {
 	const { forecast } = useGlobalContext()
+	const [mapLoaded, setMapLoaded] = useState(false)
 
 	if (!forecast || !forecast.latitude || !forecast.longitude) {
-		return <strong>Loading Map</strong>
+		return <Skeleton className="h-full w-full" />
 	}
 
 	const activeCityCoords = { latitude: forecast.latitude, longitude: forecast.longitude }
 
+	const handleMapLoaded = () => {
+		setMapLoaded(true)
+	}
+
 	return (
-		<section className="flex-1 basis-[50%]">
+		<section className="relative flex-1 basis-[50%]">
+			{!mapLoaded && <Skeleton className="absolute left-0 top-0 h-full w-full" />}{" "}
 			<MapContainer
 				zoom={10}
 				center={[activeCityCoords.latitude, activeCityCoords.longitude]}
 				style={{ height: "calc(100% - 2rem)", width: "calc(100% - 2rem)", margin: "1rem", borderRadius: "0.25rem" }}
+				whenReady={handleMapLoaded}
 			>
 				<TileLayer
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

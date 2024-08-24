@@ -9,7 +9,7 @@ export default function AirQuality() {
 	const { airQuality } = useGlobalContext()
 
 	if (!airQuality || !airQuality.current) {
-		return <Skeleton className="h-48 w-full" />
+		return <Skeleton className="w-full" />
 	}
 
 	const usAqi = airQuality.current.us_aqi

@@ -7,7 +7,7 @@ export default function Visibility() {
 	const { forecast } = useGlobalContext()
 
 	if (!forecast || !forecast.hourly || !forecast.hourly.visibility) {
-		return <Skeleton className="h-48 w-full" />
+		return <Skeleton className="h-48" />
 	}
 
 	const visibility = forecast.hourly.visibility[0]

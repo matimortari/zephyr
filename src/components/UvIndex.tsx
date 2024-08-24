@@ -8,7 +8,7 @@ export default function UvIndex() {
 	const { forecast } = useGlobalContext()
 
 	if (!forecast || !forecast.daily || !forecast.daily.uv_index_max) {
-		return <Skeleton className="h-48 w-full" />
+		return <Skeleton className="h-48" />
 	}
 
 	const uvIndexMax = forecast.daily.uv_index_max[0] || 0
@@ -26,7 +26,7 @@ export default function UvIndex() {
 					{uvIndexMax.toFixed(0)} <span className="text-base">({rating})</span>
 				</p>
 				<Progress className="progress" value={Math.min(uvIndexMax, 10) * 10} max={100} />
-				<p className="w-40 text-sm">{description}</p>
+				<p className="text-sm">{description}</p>
 			</div>
 		</section>
 	)

@@ -18,7 +18,7 @@ export const uvIndexRating = (uvIndex: number) => {
 	else
 		return {
 			rating: "Extreme",
-			description: "Extra protection required. Avoid exposure during midday.",
+			description: "Protection required. Avoid exposure during midday.",
 		}
 }
 
