@@ -82,3 +82,17 @@
 .progress {
 	background: linear-gradient(to right, #339b7f 0%, #9b9933 50%, #b32a2a 100%);
 }
+
+.scrollbar-hidden::-webkit-scrollbar {
+	display: none;
+}
+
+.scrollbar-hidden {
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+
+.scrollable-content {
+	overflow: auto;
+}
