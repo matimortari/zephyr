@@ -8,7 +8,7 @@ import { Skeleton } from "./ui/skeleton"
 export default function AirQuality() {
 	const { airQuality } = useGlobalContext()
 
-	if (!airQuality || !airQuality.current) {
+	if (!airQuality?.current) {
 		return <Skeleton className="w-full" />
 	}
 
@@ -20,6 +20,8 @@ export default function AirQuality() {
 	const sulphurDioxide = airQuality.current.sulphur_dioxide
 	const ozone = airQuality.current.ozone
 
+	const airQualityDescription = airQualityRating(usAqi)
+
 	return (
 		<section className="col-span-2 flex h-auto w-full flex-col p-4 md:h-48 md:flex-row md:gap-10">
 			<div className="flex flex-1 flex-col">
@@ -28,9 +30,9 @@ export default function AirQuality() {
 				</h2>
 
 				<div className="my-4 flex flex-col gap-2">
-					<p className="text-sm">Air Quality Index: {usAqi ?? "N/A"}</p>
-					<Progress className="progress" value={usAqi ?? 0} max={300} />
-					<p className="text-sm">{airQualityRating(usAqi)}</p>
+					<p className="text-sm">Air Quality Index: {usAqi}</p>
+					<Progress className="progress" value={usAqi} max={300} />
+					<p className="text-sm">{airQualityDescription}</p>
 				</div>
 			</div>
 

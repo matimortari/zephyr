@@ -5,21 +5,15 @@ import { useGlobalContext } from "./GlobalContext"
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel"
 import { Skeleton } from "./ui/skeleton"
 
-export default function DailyForecast() {
+export default function ForecastDaily() {
 	const { forecast } = useGlobalContext()
 
-	if (
-		!forecast ||
-		!forecast.hourly ||
-		!forecast.hourly.time ||
-		!forecast.hourly.temperature_2m ||
-		!forecast.hourly.precipitation
-	) {
-		return <Skeleton className="h-48" />
+	if (!forecast?.hourly || !forecast?.timezone) {
+		return <Skeleton className="w-full" />
 	}
 
 	const { time, temperature_2m, precipitation } = forecast.hourly
-	const timezone = forecast.timezone || "UTC"
+	const { timezone } = forecast
 
 	// Extract every hour from the forecast data
 	const fourHourForecast = time
@@ -31,6 +25,7 @@ export default function DailyForecast() {
 		.filter((_, index) => index % 1 === 0)
 
 	const { current } = forecast
+
 	const weatherCode = current?.weather_code || 0
 	const WeatherIcon = getIcon(weatherCode)
 

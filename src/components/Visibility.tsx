@@ -6,13 +6,13 @@ import { Skeleton } from "./ui/skeleton"
 export default function Visibility() {
 	const { forecast } = useGlobalContext()
 
-	if (!forecast || !forecast.hourly || !forecast.hourly.visibility) {
+	if (!forecast?.hourly) {
 		return <Skeleton className="h-48" />
 	}
+	const { visibility } = forecast.hourly
 
-	const visibility = forecast.hourly.visibility[0]
-
-	const visibilityInKm = Math.round(visibility / 1000)
+	const visibilityInKm = Math.round(visibility[0] / 1000)
+	const visibilityDescription = visibilityRating(visibilityInKm)
 
 	return (
 		<section className="flex h-48 flex-col p-4">
@@ -24,7 +24,7 @@ export default function Visibility() {
 				<p className="text-2xl font-medium">
 					{visibilityInKm} <span className="text-base">km</span>
 				</p>
-				<p className="w-36 text-sm">{visibilityRating(visibility)}</p>
+				<p className="w-36 text-sm">{visibilityDescription}</p>
 			</div>
 		</section>
 	)

@@ -3,16 +3,14 @@ import { useGlobalContext } from "./GlobalContext"
 import { Progress } from "./ui/progress"
 import { Skeleton } from "./ui/skeleton"
 
-export default function WeeklyForecast() {
+export default function ForecastWeekly() {
 	const { weeklyForecast } = useGlobalContext()
 
-	if (!weeklyForecast || !weeklyForecast.daily || !weeklyForecast.daily.time) {
-		return <Skeleton className="h-full w-full" />
+	if (!weeklyForecast?.daily) {
+		return <Skeleton className="w-full" />
 	}
 
-	const { daily } = weeklyForecast
-
-	const { time, temperature_2m_max, temperature_2m_min, precipitation_sum } = daily
+	const { time, temperature_2m_max, temperature_2m_min, precipitation_sum } = weeklyForecast.daily
 
 	const dailyForecast = time.map((day, i) => ({
 		day: new Date(day).toLocaleDateString("en-US", { weekday: "short" }),
@@ -21,8 +19,9 @@ export default function WeeklyForecast() {
 		precipitation: precipitation_sum[i],
 	}))
 
-	const maxTemp = Math.round(Math.max(...temperature_2m_max))
-	const minTemp = Math.round(Math.min(...temperature_2m_min))
+	const maxTemp = Math.max(...temperature_2m_max)
+	const minTemp = Math.min(...temperature_2m_min)
+	const tempRange = maxTemp - minTemp
 
 	return (
 		<section className="flex flex-1 flex-col justify-between p-4">
@@ -42,16 +41,12 @@ export default function WeeklyForecast() {
 						<p className="font-bold">{day.minTemp}°C</p>
 
 						<div className="relative flex flex-1 items-center">
-							<div className="relative flex flex-1 items-center">
-								<p className="absolute w-full text-center text-xs" style={{ top: "-1.5rem" }}>
-									Precipitation: {day.precipitation} mm
-								</p>
+							<p className="absolute -top-6 w-full text-center text-xs">Precipitation: {day.precipitation} mm</p>
 
-								<Progress
-									className="progress w-full"
-									value={Math.round(((day.maxTemp - day.minTemp) / (maxTemp - minTemp)) * 100)}
-								/>
-							</div>
+							<Progress
+								className="progress w-full"
+								value={Math.round(((day.maxTemp - day.minTemp) / tempRange) * 100)}
+							/>
 						</div>
 
 						<p className="font-bold">{day.maxTemp}°C</p>

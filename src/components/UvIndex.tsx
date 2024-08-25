@@ -7,13 +7,15 @@ import { Skeleton } from "./ui/skeleton"
 export default function UvIndex() {
 	const { forecast } = useGlobalContext()
 
-	if (!forecast || !forecast.daily || !forecast.daily.uv_index_max) {
+	if (!forecast?.daily) {
 		return <Skeleton className="h-48" />
 	}
 
-	const uvIndexMax = forecast.daily.uv_index_max[0] || 0
+	const { uv_index_max } = forecast.daily
 
-	const { rating, description } = uvIndexRating(uvIndexMax)
+	const uvIndex = uv_index_max[0]
+
+	const { rating, description } = uvIndexRating(uvIndex)
 
 	return (
 		<section className="col-span-full flex h-48 flex-col p-4 md:col-span-1">
@@ -23,9 +25,9 @@ export default function UvIndex() {
 
 			<div className="my-4 flex flex-col gap-2">
 				<p className="text-2xl">
-					{uvIndexMax.toFixed(0)} <span className="text-base">({rating})</span>
+					{uvIndex} <span className="text-base">({rating})</span>
 				</p>
-				<Progress className="progress" value={Math.min(uvIndexMax, 10) * 10} max={100} />
+				<Progress className="progress" value={Math.min(uvIndex, 10) * 10} max={100} />
 				<p className="text-sm">{description}</p>
 			</div>
 		</section>

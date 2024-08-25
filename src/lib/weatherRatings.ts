@@ -8,7 +8,7 @@ export const uvIndexRating = (uvIndex: number) => {
 	else if (uvIndex <= 5)
 		return {
 			rating: "Moderate",
-			description: "Protection required. Seek shade during midday hours.",
+			description: "Protection recommended. Seek shade during midday hours.",
 		}
 	else if (uvIndex <= 7)
 		return {
@@ -33,15 +33,13 @@ export const airQualityRating = (aqIndex: number) => {
 }
 
 // Get feels like rating based on the apparent temperature
-export const feelsLikeRating = (feelsLike: number, minTemp: number, maxTemp: number) => {
-	const avgTemp = (minTemp + maxTemp) / 2
-
-	if (feelsLike < avgTemp - 2) return "Feels colder than the actual temperature."
-	else if (feelsLike <= avgTemp + 2) return "Feels close to the actual temperature."
+export const feelsLikeRating = (feelsLike: number, currentTemp: number) => {
+	if (feelsLike < currentTemp - 2) return "Feels colder than the actual temperature."
+	else if (feelsLike <= currentTemp + 2) return "Feels close to the actual temperature."
 	else return "Feels warmer than the actual temperature."
 }
 
-// Ger precipitation rating based on the precipitation value
+// Get precipitation rating based on the precipitation value
 export const precipitationRating = (precipitation: number) => {
 	if (precipitation < 0.1) return "No precipitation expected."
 	else if (precipitation < 1) return "Light precipitation expected."
@@ -59,10 +57,8 @@ export const humidityRating = (humidity: number) => {
 
 // Get visibility rating based on the visibility value
 export const visibilityRating = (visibility: number) => {
-	const visibilityInKm = Math.round(visibility / 1000)
-
-	if (visibilityInKm > 10) return "Excellent: Clear and vast view."
-	else if (visibilityInKm > 5) return "Good: Easily navigable."
-	else if (visibilityInKm > 2) return "Moderate: Some limitations."
+	if (visibility > 10) return "Excellent: Clear and vast view."
+	else if (visibility > 5) return "Good: Easily navigable."
+	else if (visibility > 2) return "Moderate: Some limitations."
 	else return "Poor: Restricted and unclear view."
 }

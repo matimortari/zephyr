@@ -6,13 +6,13 @@ import { Skeleton } from "./ui/skeleton"
 export default function Precipitation() {
 	const { forecast } = useGlobalContext()
 
-	if (!forecast || !forecast?.current) {
+	if (!forecast?.current) {
 		return <Skeleton className="h-48" />
 	}
 
-	const precipitation = forecast.current.precipitation
-	const rain = forecast.current.rain
-	const snowfall = forecast.current.snowfall
+	const { precipitation, rain, snowfall } = forecast.current
+
+	const precipitationDescription = precipitationRating(precipitation)
 
 	return (
 		<section className="flex h-48 flex-col p-4">
@@ -22,7 +22,7 @@ export default function Precipitation() {
 
 			<div className="my-4 flex flex-col gap-2">
 				<p className="text-xl font-medium">{precipitation} mm</p>
-				<p className="text-sm">{precipitationRating(precipitation)}</p>
+				<p className="text-sm">{precipitationDescription}</p>
 
 				<div className="flex flex-col">
 					<div className="flex flex-row">

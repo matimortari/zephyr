@@ -6,12 +6,15 @@ import { Skeleton } from "./ui/skeleton"
 export default function Sunset() {
 	const { forecast } = useGlobalContext()
 
-	if (!forecast || !forecast.daily || !forecast.daily.sunset || !forecast.daily.sunrise) {
+	if (!forecast?.daily || !forecast?.timezone) {
 		return <Skeleton className="h-48" />
 	}
 
-	const sunsetTime = moment(forecast.daily.sunset[0]).tz(forecast.timezone).format("HH:mm")
-	const sunriseTime = moment(forecast.daily.sunrise[0]).tz(forecast.timezone).format("HH:mm")
+	const { sunrise, sunset } = forecast.daily
+	const { timezone } = forecast
+
+	const sunsetTime = sunset?.[0] ? moment(sunset[0]).tz(timezone).format("HH:mm") : "N/A"
+	const sunriseTime = sunrise?.[0] ? moment(sunrise[0]).tz(timezone).format("HH:mm") : "N/A"
 
 	return (
 		<section className="flex h-48 flex-col p-4">

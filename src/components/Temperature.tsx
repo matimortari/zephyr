@@ -26,12 +26,11 @@ export default function Temperature() {
 	}
 
 	const { current, daily } = forecast
+
 	const temp = Math.round(current.temperature_2m)
 	const minTemp = Math.round(daily.temperature_2m_min[0])
 	const maxTemp = Math.round(daily.temperature_2m_max[0])
-
 	const weatherCode = current.weather_code || 0
-
 	const WeatherIcon = getIcon(weatherCode)
 
 	return (

@@ -1,8 +1,9 @@
 "use client"
 
 import AirQuality from "../components/AirQuality"
-import DailyForecast from "../components/DailyForecast"
 import FeelsLike from "../components/FeelsLike"
+import ForecastDaily from "../components/ForecastDaily"
+import ForecastWeekly from "../components/ForecastWeekly"
 import { useGlobalContextUpdate } from "../components/GlobalContext"
 import Humidity from "../components/Humidity"
 import Mapbox from "../components/Mapbox"
@@ -12,7 +13,6 @@ import Temperature from "../components/Temperature"
 import TopNav from "../components/TopNav"
 import UvIndex from "../components/UvIndex"
 import Visibility from "../components/Visibility"
-import WeeklyForecast from "../components/WeeklyForecast"
 import Wind from "../components/Wind"
 import { defaultLocations } from "../lib/defaultLocations"
 
@@ -36,7 +36,7 @@ export default function Home() {
 			<div className="flex flex-col gap-2 pb-4 md:flex-row">
 				<div className="flex w-full min-w-72 flex-col gap-2 md:w-96">
 					<Temperature />
-					<WeeklyForecast />
+					<ForecastWeekly />
 				</div>
 
 				<div className="flex w-full flex-col">
@@ -45,7 +45,7 @@ export default function Home() {
 						<Precipitation />
 						<Humidity />
 						<Wind />
-						<DailyForecast />
+						<ForecastDaily />
 						<UvIndex />
 						<Sunset />
 						<Visibility />
