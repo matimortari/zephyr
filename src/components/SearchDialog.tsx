@@ -17,7 +17,7 @@ export default function SearchDialog() {
 			<DialogTrigger asChild>
 				<Button className="flex items-center justify-center bg-card">
 					<p className="text-sm text-muted-foreground">Search Locations...</p>
-					<SearchIcon size={15} className="ml-24 flex items-center gap-2 text-foreground" />
+					<SearchIcon size={15} className="ml-20 flex items-center gap-2 text-foreground" />
 				</Button>
 			</DialogTrigger>
 

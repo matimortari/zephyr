@@ -1,3 +1,5 @@
+"use client"
+
 import moment from "moment-timezone"
 import { useEffect, useState } from "react"
 import { getDescription, getIcon } from "../lib/weatherMappings"

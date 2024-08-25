@@ -41,12 +41,12 @@ export default function ForecastDaily() {
 				) : (
 					<Carousel className="w-full">
 						<CarouselContent>
-							{fourHourForecast.map((forecast, index) => (
+							{fourHourForecast.map((forecast) => (
 								<CarouselItem className="flex basis-32 cursor-grab flex-col items-center gap-1" key={forecast.time}>
 									<p className="text-muted-foreground">{moment(forecast.time).tz(timezone).format("HH:mm")}</p>
 									<WeatherIcon size={25} aria-hidden="true" />
 									<p className="font-semibold">{Math.round(forecast.temperature)}°C</p>
-									<span className="text-xs text-muted-foreground">Precipitation: </span>
+									<p className="text-xs text-muted-foreground">Precipitation: </p>
 									<p className="text-sm">{forecast.precipitation} mm</p>
 								</CarouselItem>
 							))}

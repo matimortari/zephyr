@@ -1,7 +1,6 @@
 import { Gauge } from "lucide-react"
 import { airQualityRating } from "../lib/weatherRatings"
 import { useGlobalContext } from "./GlobalContext"
-
 import { Progress } from "./ui/progress"
 import { Skeleton } from "./ui/skeleton"
 

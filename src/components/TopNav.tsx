@@ -26,7 +26,7 @@ export default function TopNav() {
 	const router = useRouter()
 
 	return (
-		<div className="flex w-full items-center justify-end py-2">
+		<nav className="m-auto mx-4 flex items-center justify-center py-2 md:justify-end lg:mx-8 xl:mx-24">
 			<div className="flex flex-row gap-2">
 				<SearchDialog />
 				<ThemeButton />
@@ -39,6 +39,6 @@ export default function TopNav() {
 					<Icon icon="simple-icons:github" />
 				</Button>
 			</div>
-		</div>
+		</nav>
 	)
 }

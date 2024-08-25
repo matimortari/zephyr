@@ -82,6 +82,14 @@
 	opacity: 0.9;
 }
 
+.icon {
+	transition: transform 0.3s ease-in-out;
+}
+
+.icon:hover {
+	transform: scale(1.2);
+}
+
 .progress {
 	background: linear-gradient(to right, #91b1c0, #6c9db3, #6cb3aa, #9c8a64, #945a58, #9c3d3d);
 	border-radius: 0.5rem;
