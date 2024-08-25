@@ -21,18 +21,18 @@ export default function SearchDialog() {
 				</Button>
 			</DialogTrigger>
 
-			<DialogContent className="scrollbar-hidden max-h-[80vh] overflow-auto p-0">
-				<DialogTitle className="p-3 text-lg text-muted-foreground">Search Locations</DialogTitle>
+			<DialogContent aria-describedby="search-locations" className="scrollbar-hidden max-h-[90vh] overflow-auto p-0">
+				<DialogTitle className="p-2 text-base text-muted-foreground">Search Locations</DialogTitle>
 				<Command className="flex flex-grow flex-col">
 					<CommandInput
 						value={inputValue}
 						onChangeCapture={handleInput}
 						placeholder="Search for a city or location..."
 					/>
+
 					<div className="mt-2 flex flex-grow flex-col overflow-y-auto">
-						<p className="p-2 text-sm text-muted-foreground">Suggestions</p>
-						<ul className="flex flex-col">
-							{geoCodedList?.length === 0 && <p>No Results</p>}
+						<ul>
+							{geoCodedList?.length === 0 && <p className="p-2 text-base text-muted-foreground">No Results</p>}
 							{geoCodedList?.map((item, index) => {
 								const { country, admin1, name, latitude, longitude } = item
 								return (
