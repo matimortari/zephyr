@@ -37,7 +37,7 @@ export default function ForecastWeekly() {
 						<span>(high)</span>
 					</p>
 
-					<div className="flex flex-1 items-center justify-between gap-4">
+					<div className="flex flex-1 items-center justify-between gap-2">
 						<p className="font-bold">{day.minTemp}°C</p>
 
 						<div className="relative flex flex-1 items-center">

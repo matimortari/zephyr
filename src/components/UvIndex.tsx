@@ -13,7 +13,7 @@ export default function UvIndex() {
 
 	const { uv_index_max } = forecast.daily
 
-	const uvIndex = uv_index_max[0]
+	const uvIndex = Math.ceil(uv_index_max[0])
 
 	const { rating, description } = uvIndexRating(uvIndex)
 

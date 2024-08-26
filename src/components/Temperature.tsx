@@ -34,6 +34,7 @@ export default function Temperature() {
 	const maxTemp = Math.round(daily.temperature_2m_max[0])
 	const weatherCode = current.weather_code || 0
 	const WeatherIcon = getIcon(weatherCode)
+	const weatherDescription = getDescription(weatherCode)
 
 	return (
 		<section className="flex flex-col justify-between p-4">
@@ -48,8 +49,8 @@ export default function Temperature() {
 
 			<p className="self-center p-4 text-9xl font-bold">{temp}°</p>
 
-			<WeatherIcon size={25} />
-			<p className="pt-2 text-lg font-medium">{getDescription(weatherCode)}</p>
+			<WeatherIcon size={30} className="icon" />
+			<p className="py-2 text-lg font-semibold">{weatherDescription}</p>
 			<p className="flex items-center gap-2">
 				<span>Low: {minTemp}°</span>
 				<span>High: {maxTemp}°</span>

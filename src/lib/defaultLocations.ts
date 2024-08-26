@@ -34,4 +34,18 @@ export const defaultLocations = [
 		latitude: -33.8688,
 		longitude: 151.2093,
 	},
+	{
+		name: "Tokyo",
+		country: "JP",
+		admin1: "Tokyo",
+		latitude: 35.6762,
+		longitude: 139.6503,
+	},
+	{
+		name: "Dubai",
+		country: "AE",
+		admin1: "Dubai",
+		latitude: 25.2769,
+		longitude: 55.2962,
+	},
 ]

@@ -6,7 +6,8 @@ import { useEffect, useState } from "react"
 import SearchDialog from "./SearchDialog"
 import { Button } from "./ui/button"
 
-function ThemeButton() {
+export default function TopNav() {
+	const router = useRouter()
 	const [theme, setTheme] = useState("dark")
 
 	const toggleTheme = () => setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"))
@@ -16,20 +17,16 @@ function ThemeButton() {
 	}, [theme])
 
 	return (
-		<Button onClick={toggleTheme} className="button">
-			<Icon icon={theme === "dark" ? "material-symbols:light-mode-rounded" : "material-symbols:dark-mode-rounded"} />
-		</Button>
-	)
-}
+		<nav className="mx-4 flex items-center justify-between py-2 lg:mx-8 xl:mx-24">
+			<div className="flex items-center gap-6"></div>
 
-export default function TopNav() {
-	const router = useRouter()
-
-	return (
-		<nav className="m-auto mx-4 flex items-center justify-center py-2 md:justify-end lg:mx-8 xl:mx-24">
-			<div className="flex flex-row gap-2">
+			<div className="flex items-center gap-2">
 				<SearchDialog />
-				<ThemeButton />
+				<Button onClick={toggleTheme} className="button flex h-10 w-10 items-center justify-center">
+					<Icon
+						icon={theme === "light" ? "material-symbols:light-mode-rounded" : "material-symbols:dark-mode-rounded"}
+					/>
+				</Button>
 				<Button
 					onClick={() => {
 						router.push("https://github.com/w11dcard/zephyr")

@@ -21,16 +21,11 @@ export default function Home() {
 	const getClickedCityCoords = (latitude: number, longitude: number, cityName: string) => {
 		setActiveCityCoords([latitude, longitude])
 		updateCityName(cityName)
-
-		window.scrollTo({
-			top: 0,
-			behavior: "smooth",
-		})
 	}
 
 	return (
 		<>
-			<div className="m-auto mx-4 lg:mx-8 xl:mx-24">
+			<div className="mx-4 lg:mx-8 xl:mx-24">
 				<div className="flex flex-col gap-2 pb-4 md:flex-row">
 					<div className="flex w-full min-w-72 flex-col gap-2 md:w-96">
 						<Temperature />
@@ -53,7 +48,6 @@ export default function Home() {
 						<div className="my-2 flex h-full gap-2">
 							<Mapbox />
 							<div className="flex flex-col gap-2">
-								<h2 className="flex items-center justify-end font-semibold">Top Cities</h2>
 								{defaultLocations.map((location, index) => {
 									return (
 										<section

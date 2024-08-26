@@ -17,7 +17,9 @@ export default function SearchDialog() {
 		<Dialog open={open} onOpenChange={setOpen}>
 			<DialogTrigger asChild>
 				<Button className="flex items-center justify-center bg-card hover:bg-muted" onClick={() => setOpen(true)}>
-					<p className="text-sm text-muted-foreground">Search Locations...</p>
+					<div className="flex flex-row gap-4 pr-4">
+						<p className="text-sm text-muted-foreground">Search Locations...</p>
+					</div>
 					<SearchIcon size={15} className="ml-20 flex items-center gap-2 text-foreground" />
 				</Button>
 			</DialogTrigger>
