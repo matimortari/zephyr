@@ -32,7 +32,7 @@ export default function ForecastDaily() {
 	return (
 		<section className="col-span-full flex h-48 flex-col gap-4 p-4 md:col-span-3">
 			<h2 className="flex items-center gap-2 font-medium">
-				<ClockIcon size={25} aria-hidden="true" /> Daily Forecast
+				<ClockIcon size={25} className="icon" /> Daily Forecast
 			</h2>
 
 			<div className="flex flex-col justify-center gap-6 overflow-hidden">

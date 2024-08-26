@@ -16,13 +16,13 @@ export default function SearchDialog() {
 	return (
 		<Dialog open={open} onOpenChange={setOpen}>
 			<DialogTrigger asChild>
-				<Button className="flex items-center justify-center bg-card" onClick={() => setOpen(true)}>
+				<Button className="flex items-center justify-center bg-card hover:bg-muted" onClick={() => setOpen(true)}>
 					<p className="text-sm text-muted-foreground">Search Locations...</p>
 					<SearchIcon size={15} className="ml-20 flex items-center gap-2 text-foreground" />
 				</Button>
 			</DialogTrigger>
 
-			<DialogContent aria-describedby="search-locations" className="scrollbar-hidden max-h-[90vh] overflow-auto p-0">
+			<DialogContent className="scrollbar-hidden max-h-[90vh] overflow-auto p-0">
 				<DialogTitle className="p-2 text-base text-muted-foreground">Search Locations</DialogTitle>
 				<Command className="flex flex-grow flex-col">
 					<CommandInput

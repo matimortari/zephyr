@@ -50,10 +50,10 @@ export default function Home() {
 							<AirQuality />
 						</div>
 
-						<div className="my-2 flex gap-2">
+						<div className="my-2 flex h-full gap-2">
 							<Mapbox />
-							<div className="flex flex-col gap-2 p-2">
-								<h2 className="flex items-center gap-2 font-semibold">Top Cities</h2>
+							<div className="flex flex-col gap-2">
+								<h2 className="flex items-center justify-end font-semibold">Top Cities</h2>
 								{defaultLocations.map((location, index) => {
 									return (
 										<section
@@ -63,7 +63,7 @@ export default function Home() {
 											}}
 											className="flex cursor-pointer flex-col gap-2"
 										>
-											<p className="p-4 text-center font-medium">{location.name}</p>
+											<p className="px-2 py-4 text-center text-sm font-semibold">{location.name}</p>
 										</section>
 									)
 								})}

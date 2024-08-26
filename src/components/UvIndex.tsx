@@ -20,7 +20,7 @@ export default function UvIndex() {
 	return (
 		<section className="col-span-full flex h-48 flex-col p-4 md:col-span-1">
 			<h2 className="flex items-center gap-2 font-medium">
-				<SunDim size={25} /> UV Index
+				<SunDim size={25} className="icon" /> UV Index
 			</h2>
 
 			<div className="my-4 flex flex-col gap-2">

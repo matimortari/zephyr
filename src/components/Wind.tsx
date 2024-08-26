@@ -17,7 +17,7 @@ export default function Wind() {
 	return (
 		<section className="flex h-48 flex-col p-4">
 			<h2 className="flex items-center gap-2 font-medium">
-				<WindIcon size={25} /> Wind
+				<WindIcon size={25} className="icon" /> Wind
 			</h2>
 
 			<div className="my-4 flex flex-col gap-1">
