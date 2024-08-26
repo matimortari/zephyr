@@ -11,11 +11,12 @@ export default function SearchDialog() {
 	const { getClickedCityCoords } = useGlobalContextUpdate()
 
 	const [hoveredIndex, setHoveredIndex] = useState<number>(0)
+	const [open, setOpen] = useState(false)
 
 	return (
-		<Dialog>
+		<Dialog open={open} onOpenChange={setOpen}>
 			<DialogTrigger asChild>
-				<Button className="flex items-center justify-center bg-card">
+				<Button className="flex items-center justify-center bg-card" onClick={() => setOpen(true)}>
 					<p className="text-sm text-muted-foreground">Search Locations...</p>
 					<SearchIcon size={15} className="ml-20 flex items-center gap-2 text-foreground" />
 				</Button>
@@ -41,6 +42,7 @@ export default function SearchDialog() {
 										onMouseEnter={() => setHoveredIndex(index)}
 										onClick={() => {
 											getClickedCityCoords(latitude, longitude, name)
+											setOpen(false)
 										}}
 										className={`cursor-pointer rounded p-4 text-sm ${hoveredIndex === index ? "bg-muted" : ""}`}
 									>
