@@ -56,8 +56,8 @@ export default function Mapbox() {
 				whenReady={handleMapLoaded}
 			>
 				<TileLayer
-					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-					attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
+					url={`https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png?api_key=${process.env.STADIA_API_KEY}`}
+					attribution="&copy; <a href='https://www.stadiamaps.com/'>Stadia Maps</a>"
 				/>
 				<FlyToActiveCity activeCityCoords={activeCityCoords} />
 			</MapContainer>
