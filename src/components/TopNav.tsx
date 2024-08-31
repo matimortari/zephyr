@@ -29,7 +29,7 @@ export default function TopNav() {
 				</Button>
 				<Button
 					onClick={() => {
-						router.push("https://github.com/w11dcard/zephyr")
+						router.push("https://github.com/matimortari/zephyr")
 					}}
 					className="button"
 				>

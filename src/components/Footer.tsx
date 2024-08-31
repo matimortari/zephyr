@@ -5,11 +5,11 @@ export default function Footer() {
 	return (
 		<footer className="flex items-center justify-between p-4 pt-12 text-muted-foreground">
 			<div className="order-3 flex items-center">
-				<Link href="https://github.com/w11dcard" target="_blank" rel="noopener noreferrer">
+				<Link href="https://github.com/matimortari" target="_blank" rel="noopener noreferrer">
 					<Icon icon="simple-icons:github" className="icon h-6 w-6" />
 				</Link>
 				<Link
-					href="https://www.linkedin.com/in/matheus-mortari-19rt/"
+					href="https://www.linkedin.com/in/matheus-mortari-19rt"
 					target="_blank"
 					rel="noopener noreferrer"
 					className="ml-2 md:ml-4"
