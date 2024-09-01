@@ -6,7 +6,7 @@ import { useEffect, useState } from "react"
 import SearchDialog from "./SearchDialog"
 import { Button } from "./ui/button"
 
-export default function TopNav() {
+export default function Navbar() {
 	const router = useRouter()
 	const [theme, setTheme] = useState("dark")
 

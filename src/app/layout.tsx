@@ -1,29 +1,24 @@
-import { Analytics } from "@vercel/analytics/react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { GlobalContextProvider } from "../components/context/GlobalContext"
 import Footer from "../components/Footer"
-import TopNav from "../components/TopNav"
+import Navbar from "../components/Navbar"
 import "../styles/globals.css"
+
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
 	title: "Zephyr 🌤️",
-	description: "Next.js Weather App",
+	description: "A clean, elegant weather app!",
 }
-
-const inter = Inter({
-	subsets: ["latin"],
-	display: "swap",
-})
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<html lang="en" className={inter.className}>
-			<body>
+		<html lang="en">
+			<body className={inter.className}>
 				<GlobalContextProvider>
-					<Analytics />
-					<TopNav />
-					<main>{children}</main>
+					<Navbar />
+					{children}
 					<Footer />
 				</GlobalContextProvider>
 			</body>

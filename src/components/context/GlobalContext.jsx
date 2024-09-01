@@ -1,5 +1,6 @@
 "use client"
 
+import { Analytics } from "@vercel/analytics/react"
 import axios from "axios"
 import { debounce } from "lodash"
 import { createContext, useContext, useEffect, useState } from "react"
@@ -118,6 +119,7 @@ export const GlobalContextProvider = ({ children }) => {
 				}}
 			>
 				{children}
+				<Analytics />
 			</GlobalContextUpdate.Provider>
 		</GlobalContext.Provider>
 	)
