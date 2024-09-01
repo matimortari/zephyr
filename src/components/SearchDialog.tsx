@@ -1,7 +1,7 @@
 "use client"
 import { SearchIcon } from "lucide-react"
 import { useState } from "react"
-import { useGlobalContext, useGlobalContextUpdate } from "./GlobalContext"
+import { useGlobalContext, useGlobalContextUpdate } from "./context/GlobalContext"
 import { Button } from "./ui/button"
 import { Command, CommandInput } from "./ui/command"
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "./ui/dialog"

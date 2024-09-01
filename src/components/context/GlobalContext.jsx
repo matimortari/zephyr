@@ -3,7 +3,7 @@
 import axios from "axios"
 import { debounce } from "lodash"
 import { createContext, useContext, useEffect, useState } from "react"
-import { defaultLocations } from "../lib/defaultLocations"
+import { defaultLocations } from "../../lib/defaultLocations"
 
 const GlobalContext = createContext()
 const GlobalContextUpdate = createContext()

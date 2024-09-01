@@ -1,10 +1,10 @@
 "use client"
 
 import AirQuality from "../components/AirQuality"
+import { useGlobalContextUpdate } from "../components/context/GlobalContext"
 import FeelsLike from "../components/FeelsLike"
 import ForecastDaily from "../components/ForecastDaily"
 import ForecastWeekly from "../components/ForecastWeekly"
-import { useGlobalContextUpdate } from "../components/GlobalContext"
 import Humidity from "../components/Humidity"
 import Mapbox from "../components/Mapbox"
 import Precipitation from "../components/Precipitation"

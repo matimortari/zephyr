@@ -1,6 +1,6 @@
 import { Eye } from "lucide-react"
 import { visibilityRating } from "../lib/weatherRatings"
-import { useGlobalContext } from "./GlobalContext"
+import { useGlobalContext } from "./context/GlobalContext"
 import { Skeleton } from "./ui/skeleton"
 
 export default function Visibility() {

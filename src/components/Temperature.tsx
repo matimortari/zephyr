@@ -3,7 +3,7 @@
 import moment from "moment-timezone"
 import { useEffect, useState } from "react"
 import { getDescription, getIcon } from "../lib/weatherMappings"
-import { useGlobalContext } from "./GlobalContext"
+import { useGlobalContext } from "./context/GlobalContext"
 import { Skeleton } from "./ui/skeleton"
 
 export default function Temperature() {

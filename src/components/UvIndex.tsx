@@ -1,6 +1,6 @@
 import { SunDim } from "lucide-react"
 import { uvIndexRating } from "../lib/weatherRatings"
-import { useGlobalContext } from "./GlobalContext"
+import { useGlobalContext } from "./context/GlobalContext"
 import { Progress } from "./ui/progress"
 import { Skeleton } from "./ui/skeleton"
 

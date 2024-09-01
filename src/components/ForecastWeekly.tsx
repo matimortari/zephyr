@@ -1,5 +1,5 @@
 import { CalendarDays } from "lucide-react"
-import { useGlobalContext } from "./GlobalContext"
+import { useGlobalContext } from "./context/GlobalContext"
 import { Progress } from "./ui/progress"
 import { Skeleton } from "./ui/skeleton"
 

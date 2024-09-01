@@ -1,6 +1,6 @@
 import { feelsLikeRating } from "@/src/lib/weatherRatings"
 import { Thermometer } from "lucide-react"
-import { useGlobalContext } from "./GlobalContext"
+import { useGlobalContext } from "./context/GlobalContext"
 import { Skeleton } from "./ui/skeleton"
 
 export default function FeelsLike() {

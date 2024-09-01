@@ -4,7 +4,7 @@ import "leaflet/dist/leaflet.css"
 import dynamic from "next/dynamic"
 import { useEffect, useState } from "react"
 import { useMap } from "react-leaflet"
-import { useGlobalContext } from "./GlobalContext"
+import { useGlobalContext } from "./context/GlobalContext"
 import { Skeleton } from "./ui/skeleton"
 
 const MapContainer = dynamic(() => import("react-leaflet").then((module) => module.MapContainer), {
