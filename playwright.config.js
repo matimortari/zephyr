@@ -1,14 +1,18 @@
-const config = {
+import { defineConfig } from "@playwright/test"
+
+export default defineConfig({
+	testDir: "./tests",
+	outputDir: "./tests/test-results",
+	use: {
+		headless: true,
+		screenshot: "only-on-failure",
+		video: "retain-on-failure",
+	},
 	webServer: {
-		command: "npm run start",
-		url: "http://127.0.0.1:3000",
+		reuseExistingServer: !process.env.CI,
+		command: "npm run dev",
+		port: 3000,
 		stdout: "ignore",
 		stderr: "pipe",
 	},
-	testDir: "tests",
-	outputDir: "tests/test-results",
-	testMatch: /(.+\.)?(test|spec)\.[jt]s/,
-	fullyParallel: true,
-}
-
-export default config
+})
