@@ -8,7 +8,7 @@ Next.js weather app! Built with Next.js, TypeScript, Tailwind CSS, and shadcn/ui
 
 - Next.js for server-side rendering.
 - OpenWeatherMap API for weather data.
-- shadcn/ui for UI components.
+- shadcn/ui integration for UI components.
 - TypeScript.
 - Tailwind CSS.
 

@@ -24,48 +24,46 @@ export default function Home() {
 	}
 
 	return (
-		<>
-			<div className="mx-4 lg:mx-8 xl:mx-24">
-				<div className="flex flex-col gap-2 pb-4 md:flex-row">
-					<div className="flex w-full min-w-72 flex-col gap-2 md:w-96">
-						<Temperature />
-						<ForecastWeekly />
+		<div className="mx-4 lg:mx-8 xl:mx-24">
+			<div className="flex flex-col gap-2 pb-4 md:flex-row">
+				<div className="flex w-full min-w-72 flex-col gap-2 md:w-96">
+					<Temperature />
+					<ForecastWeekly />
+				</div>
+
+				<div className="flex w-full flex-col">
+					<div className="grid grid-cols-2 gap-2 lg:grid-cols-4">
+						<FeelsLike />
+						<Precipitation />
+						<Humidity />
+						<Wind />
+						<ForecastDaily />
+						<UvIndex />
+						<Sunset />
+						<Visibility />
+						<AirQuality />
 					</div>
 
-					<div className="flex w-full flex-col">
-						<div className="grid grid-cols-2 gap-2 lg:grid-cols-4">
-							<FeelsLike />
-							<Precipitation />
-							<Humidity />
-							<Wind />
-							<ForecastDaily />
-							<UvIndex />
-							<Sunset />
-							<Visibility />
-							<AirQuality />
-						</div>
-
-						<div className="my-2 flex h-full gap-2">
-							<Mapbox />
-							<div className="flex flex-col gap-2">
-								{defaultLocations.map((location, index) => {
-									return (
-										<section
-											key={index}
-											onClick={() => {
-												getClickedCityCoords(location.latitude, location.longitude, location.name)
-											}}
-											className="flex cursor-pointer flex-col gap-2"
-										>
-											<p className="px-2 py-4 text-center text-sm font-semibold">{location.name}</p>
-										</section>
-									)
-								})}
-							</div>
+					<div className="my-2 flex h-full gap-2">
+						<Mapbox />
+						<div className="flex flex-col gap-2">
+							{defaultLocations.map((location, index) => {
+								return (
+									<section
+										key={index}
+										onClick={() => {
+											getClickedCityCoords(location.latitude, location.longitude, location.name)
+										}}
+										className="flex cursor-pointer flex-col gap-2"
+									>
+										<p className="px-2 py-4 text-center text-sm font-semibold">{location.name}</p>
+									</section>
+								)
+							})}
 						</div>
 					</div>
 				</div>
 			</div>
-		</>
+		</div>
 	)
 }
