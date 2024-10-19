@@ -1,6 +1,6 @@
+import { getIcon } from "@/src/lib/weatherMappings"
 import { ClockIcon } from "lucide-react"
 import moment from "moment-timezone"
-import { getIcon } from "../lib/weatherMappings"
 import { useGlobalContext } from "./context/GlobalContext"
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel"
 import { Skeleton } from "./ui/skeleton"
