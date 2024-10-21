@@ -30,7 +30,7 @@ export const getDescription = (weatherCode: number): string => {
 		86: "Snow showers: Heavy intensity",
 		95: "Thunderstorm: Slight or moderate",
 		96: "Thunderstorm with slight hail",
-		99: "Thunderstorm with heavy hail",
+		99: "Thunderstorm with heavy hail"
 	}
 
 	return weatherMap[weatherCode] || "Unknown weather code"

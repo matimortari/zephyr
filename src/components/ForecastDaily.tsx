@@ -20,7 +20,7 @@ export default function ForecastDaily() {
 		.map((timestamp, index) => ({
 			time: timestamp,
 			temperature: temperature_2m[index],
-			precipitation: precipitation[index],
+			precipitation: precipitation[index]
 		}))
 		.filter((_, index) => index % 1 === 0)
 

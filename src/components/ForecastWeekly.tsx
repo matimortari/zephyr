@@ -16,7 +16,7 @@ export default function ForecastWeekly() {
 		day: new Date(day).toLocaleDateString("en-US", { weekday: "short" }),
 		minTemp: Math.round(temperature_2m_min[i]),
 		maxTemp: Math.round(temperature_2m_max[i]),
-		precipitation: precipitation_sum[i],
+		precipitation: precipitation_sum[i]
 	}))
 
 	const maxTemp = Math.max(...temperature_2m_max)

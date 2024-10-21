@@ -3,22 +3,22 @@ export const uvIndexRating = (uvIndex: number) => {
 	if (uvIndex <= 2)
 		return {
 			rating: "Low",
-			description: "No protection required. You can safely stay outside.",
+			description: "No protection required. You can safely stay outside."
 		}
 	else if (uvIndex <= 5)
 		return {
 			rating: "Moderate",
-			description: "Protection recommended. Seek shade during midday hours.",
+			description: "Protection recommended. Seek shade during midday hours."
 		}
 	else if (uvIndex <= 7)
 		return {
 			rating: "High",
-			description: "Protection required. Seek shade during midday hours.",
+			description: "Protection required. Seek shade during midday hours."
 		}
 	else
 		return {
 			rating: "Extreme",
-			description: "Protection required. Avoid exposure during midday.",
+			description: "Protection required. Avoid exposure during midday."
 		}
 }
 

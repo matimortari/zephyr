@@ -11,7 +11,7 @@ export default defineConfig({
 		css: true,
 		coverage: {
 			include: ["src/**/*"],
-			provider: "v8",
-		},
-	},
+			provider: "v8"
+		}
+	}
 })

@@ -108,14 +108,14 @@ export const GlobalContextProvider = ({ children }) => {
 				handleInput,
 				setActiveCityCoords,
 				airQuality,
-				activeCityName,
+				activeCityName
 			}}
 		>
 			<GlobalContextUpdate.Provider
 				value={{
 					setActiveCityCoords,
 					updateCityName,
-					getClickedCityCoords,
+					getClickedCityCoords
 				}}
 			>
 				{children}

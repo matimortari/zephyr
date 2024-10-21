@@ -8,11 +8,11 @@ import { useGlobalContext } from "./context/GlobalContext"
 import { Skeleton } from "./ui/skeleton"
 
 const MapContainer = dynamic(() => import("react-leaflet").then((module) => module.MapContainer), {
-	ssr: false,
+	ssr: false
 }) // Disable server-side rendering for MapContainer
 
 const TileLayer = dynamic(() => import("react-leaflet").then((module) => module.TileLayer), {
-	ssr: false,
+	ssr: false
 }) // Disable server-side rendering for TileLayer
 
 function FlyToActiveCity({ activeCityCoords }) {
@@ -22,7 +22,7 @@ function FlyToActiveCity({ activeCityCoords }) {
 		if (activeCityCoords && !isNaN(activeCityCoords.latitude) && !isNaN(activeCityCoords.longitude)) {
 			const zoomLev = 13
 			const flyToOptions = {
-				duration: 1.5,
+				duration: 1.5
 			}
 
 			map.flyTo([activeCityCoords.latitude, activeCityCoords.longitude], zoomLev, flyToOptions)
